@@ -1,5 +1,6 @@
 package it.uniroma3.model;
 
+//Creazione Amministratore
 public class Amministratore {
 	
 	private String cognome;
