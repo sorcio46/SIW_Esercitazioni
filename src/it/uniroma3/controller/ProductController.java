@@ -18,6 +18,7 @@ public class ProductController {
 	private Float price;
 	private String description;
 	private String code;
+	private int disponibilita;
 	private Product product;
 	private List<Product> products;
 	
@@ -25,7 +26,7 @@ public class ProductController {
 	private ProductFacade productFacade;
 	
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description);
+		this.product = productFacade.createProduct(name, code, price, description, disponibilita);
 		return "product"; 
 	}
 	

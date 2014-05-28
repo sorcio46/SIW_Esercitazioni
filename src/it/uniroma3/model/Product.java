@@ -26,14 +26,17 @@ import javax.persistence.Column;
 	@Column(nullable = false)
 	private String code;
 	
+	private int disponibilita;
+	
 	public Product() {
     }
 
-	public Product(String name, Float price, String description, String code) {
+	public Product(String name, Float price, String description, String code, int disponibilita) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.code = code;
+        this.setDisponibilita(disponibilita);
 	}      
     
     public Long getId() {
@@ -72,7 +75,15 @@ import javax.persistence.Column;
         this.price = price;
     }
 	
-    public boolean equals(Object obj) {
+    public int getDisponibilita() {
+		return disponibilita;
+	}
+
+	public void setDisponibilita(int disponibilita) {
+		this.disponibilita = disponibilita;
+	}
+
+	public boolean equals(Object obj) {
         Product product = (Product)obj;
         return this.getCode().equals(product.getCode());
     }
