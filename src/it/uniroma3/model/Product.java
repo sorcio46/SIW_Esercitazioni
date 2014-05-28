@@ -34,11 +34,9 @@ import javax.persistence.Column;
         this.price = price;
         this.description = description;
         this.code = code;
-}
-
-    //          Getters & Setters        
+	}      
     
-   public Long getId() {
+    public Long getId() {
         return id;
     }
 
