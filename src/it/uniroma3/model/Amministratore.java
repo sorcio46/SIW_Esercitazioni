@@ -7,6 +7,7 @@ public class Amministratore {
 	private String nome;
 	private String mail;
 	private int password;
+	private Long id;
 
 	public Amministratore(String nome, String cognome, String mail,int password) {
 		this.nome = nome;
@@ -14,7 +15,11 @@ public class Amministratore {
 		this.mail = mail;
 		this.password = password;
 	}
-
+	
+	public Long getId() {
+		return this.id;
+	}
+	
 	public String getCognome() {
 		return cognome;
 	}
@@ -46,12 +51,13 @@ public class Amministratore {
 	public void setPassword(int password) {
 		this.password = password;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((cognome == null) ? 0 : cognome.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + password;
@@ -71,6 +77,11 @@ public class Amministratore {
 			if (other.cognome != null)
 				return false;
 		} else if (!cognome.equals(other.cognome))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (mail == null) {
 			if (other.mail != null)

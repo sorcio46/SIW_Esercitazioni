@@ -5,9 +5,14 @@ import java.util.List;
 
 public class CatalogoProdotti {
 	private List<Product> prodotti = new ArrayList<Product>();
+	private Long id;
 	
 	public CatalogoProdotti(){
 		//classe Singleton
+	}
+	
+	public Long getId(){
+		return this.id;
 	}
 	
 	public List<Product> getProducts(){
