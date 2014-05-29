@@ -26,7 +26,7 @@ public class OrdineFacade {
 				return ordine;
 			}
 			
-		//Metodo per richiamre tutti gli ordini	
+		//Metodo per richiamare tutti gli ordini	
 			public List<Ordine> getAllOrdini() {
 				CriteriaQuery<Ordine> cq = em.getCriteriaBuilder().createQuery(Ordine.class);
 				cq.select(cq.from(Ordine.class));
