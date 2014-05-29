@@ -12,8 +12,7 @@ public class Ordine {
 	private Date dataEvasioneOrdine;
 	private double totale;
 	
-	public Ordine(List<RigaOrdine> rigaOrdine, long codice, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
-		this.codice = codice;
+	public Ordine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
 		this.dataAperturaOrdine = dataAperturaOrdine;
 		this.dataChiusuraOrdine = dataChiusuraOrdine;
 		this.dataEvasioneOrdine = dataEvasioneOrdine;
@@ -32,10 +31,6 @@ public class Ordine {
 
 	public Long getCodice() {
 		return codice;
-	}
-
-	public void setCodice(Long codice) {
-		this.codice = codice;
 	}
 
 	public Date getDataAperturaOrdine() {
