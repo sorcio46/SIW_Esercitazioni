@@ -1,14 +1,34 @@
 package it.uniroma3.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Column;
+
+@Entity
+@NamedQuery(name="trovaTutteLeRigheOrdine", query="SELECT r from RigaOrdine r")
 public class RigaOrdine {
+	@Column(nullable=false)
 	private Product prodotto;
+	
+	@Column(nullable=false)
 	private int quantita;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	
 	public RigaOrdine(Product p, int q){
 		this.prodotto=p;
 		this.quantita=q;
 	}
 
+	public Long getId() {
+		return this.id;
+	}
+	
 	public Product getProdotto() {
 		return prodotto;
 	}
