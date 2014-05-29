@@ -1,10 +1,26 @@
 package it.uniroma3.model;
 
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+
+
+@Entity
+@NamedQuery(name = "TrovaTuttiIFornitori", query = "SELECT f FROM Fornitore f")
 
 public class Fornitore {
+	@Column(nullable = false)
 	private String nome;
+	@Column(nullable = false)
 	private String partitaIVA;
+	@Column(nullable = false)
 	private String indirizzo;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	public Fornitore(String nome, String partitaIVA, String indirizzo) {

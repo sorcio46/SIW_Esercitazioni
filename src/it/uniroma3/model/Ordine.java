@@ -1,15 +1,32 @@
 package it.uniroma3.model;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.NamedQuery;
+
+@Entity
+@NamedQuery(name = "TrovaTuttiGliOrdini", query = "SELECT o FROM Ordine o")
 
 public class Ordine {
+	@Column(nullable = false)
 	private List<RigaOrdine> rigaOrdine = new ArrayList<RigaOrdine>();
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codice;
+	@Column(nullable = false)
 	private Date dataAperturaOrdine;
+	@Column(nullable = false)
 	private Date dataChiusuraOrdine;
+	@Column(nullable = false)
 	private Date dataEvasioneOrdine;
+	@Column(nullable = false)
 	private double totale;
 	
 	public Ordine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
