@@ -1,12 +1,30 @@
 package it.uniroma3.model;
 
-//Creazione Amministratore
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Column;
+
+@Entity
+@NamedQuery(name="trovaTuttiGliAmministratori", query="SELECT a from Amministratore a")
 public class Amministratore {
 	
+	@Column(nullable=false)
 	private String cognome;
+	
+	@Column(nullable=false)
 	private String nome;
+	
+	@Column(nullable=false)
 	private String mail;
+	
+	@Column(nullable=false)
 	private int password;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
 	public Amministratore(String nome, String cognome, String mail,int password) {
