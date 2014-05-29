@@ -11,6 +11,7 @@ public class Utente {
 	private String indirizzo;
 	private String mail;
 	private int password;
+	private long id;
 
 	public Utente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,
 			int password) {
@@ -80,6 +81,10 @@ public class Utente {
 		this.password = password;
 	}
 	
+	public long getId() {
+		return id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +96,7 @@ public class Utente {
 				* result
 				+ ((dataDiRegistrazione == null) ? 0 : dataDiRegistrazione
 						.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
 		result = prime * result
 				+ ((indirizzo == null) ? 0 : indirizzo.hashCode());
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
@@ -123,6 +129,8 @@ public class Utente {
 				return false;
 		} else if (!dataDiRegistrazione.equals(other.dataDiRegistrazione))
 			return false;
+		if (id != other.id)
+			return false;
 		if (indirizzo == null) {
 			if (other.indirizzo != null)
 				return false;
@@ -142,4 +150,6 @@ public class Utente {
 			return false;
 		return true;
 	}
+
+	
 }
