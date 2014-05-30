@@ -11,8 +11,9 @@
 </head>
 <body>
 	<f:view>
-		<h1>SIW-JEE-ES2</h1>
+		<h1>PROGETTO ESAME SIW GIUGNO 2014</h1>
 		<ul>
+			<li><a>Opzioni disponibili</a>
 			<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
 					a new product</a></li>
 			<li><h:form>
