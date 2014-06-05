@@ -13,6 +13,10 @@
 <body>
 	<f:view>
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
+		<c:if test="${amministratoreController.corrente != null}">
+			<h1><center>Benvenuto ${amministratoreController.corrente.nome}</center></h1>
+		</c:if>
+		<h1><center>Benvenuto ${amministratoreController.corrente.nome}</center></h1>
 		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
 		<h1><center><a href='<c:url value="/faces/login.jsp" />'>Effettua il login</a></center></h1>	
 		<h2>Operazioni per la diagnostica:</h2> 

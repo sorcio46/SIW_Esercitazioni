@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
+@SessionScoped
 public class AmministratoreController {
 	
 	@ManagedProperty(value="#{param.id}")
@@ -17,6 +18,7 @@ public class AmministratoreController {
 	private String mail;
 	private String password;
 	private Amministratore amministratore;
+	private Amministratore corrente;
 	private List<Amministratore> amministratori;
 	
 	@EJB
@@ -40,6 +42,18 @@ public class AmministratoreController {
 	public String findAmministratore(Long id) {
 		this.amministratore = aFacade.getAmministratore(id);
 		return "amministratore";
+	}
+	
+	public String loginAmministratore(){
+		this.amministratori = aFacade.getAllAmministratori();
+		for(Amministratore am:amministratori){
+			if(mail==am.getMail())
+				if(password==am.getPassword()){
+					this.corrente=am;
+					return "index";
+				}
+		}
+		return "index";
 	}
 
 	public Long getId() {
@@ -88,6 +102,14 @@ public class AmministratoreController {
 
 	public void setAmministratore(Amministratore amministratore) {
 		this.amministratore = amministratore;
+	}
+	
+	public Amministratore getCorrente() {
+		return corrente;
+	}
+
+	public void setCorrente(Amministratore corrente) {
+		this.corrente = corrente;
 	}
 
 	public List<Amministratore> getAmministratori() {
