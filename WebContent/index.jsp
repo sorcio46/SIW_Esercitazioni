@@ -8,18 +8,17 @@
 <body bgcolor="#E6E6FA">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>SIW-JEE-ES2</title>
+<title>SIW-PROGETTO-ESAME</title>
 </head>
 <body>
 	<f:view>
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
+		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
+		<h1><center><a href='<c:url value="/faces/login.jsp" />'>Effettua il login</a></center></h1>	
 		<h2>Operazioni per la diagnostica:</h2> 
 		<ul>
 			<li><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un nuovo prodotto nella base di dati</a></li>
-			<li><h:form>
-					<h:commandLink action="#{productController.listProducts}"
-						value="Visualizza la base di dati dei prodotti" />
-				</h:form></li>
+			<li><h:form><h:commandLink action="#{productController.listProducts}" value="Visualizza la base di dati dei prodotti"/></h:form></li>
 		</ul>
 		<h2>Realizzato dagli studenti:</h2>
 		<ul>
