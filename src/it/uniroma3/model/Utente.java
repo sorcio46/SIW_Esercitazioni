@@ -26,14 +26,14 @@ public class Utente {
 	@Column(nullable = false)
 	private String mail;
 	@Column(nullable = false)
-	private int password;
+	private String password;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
 	public Utente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,
-			int password) {
+			String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
@@ -92,11 +92,11 @@ public class Utente {
 		this.mail = mail;
 	}
 
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 	
@@ -120,7 +120,7 @@ public class Utente {
 				+ ((indirizzo == null) ? 0 : indirizzo.hashCode());
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + password;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());;
 		return result;
 	}
 

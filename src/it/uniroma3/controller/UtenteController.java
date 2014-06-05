@@ -21,7 +21,7 @@ public class UtenteController {
 	private String mail;
 	private Date dataDiNascita;
 	private Date dataDiRegistrazione;
-	private int password;
+	private String password;
 	private Utente utente;
 	private List<Utente> utenti;
 	
@@ -104,11 +104,11 @@ public class UtenteController {
 		this.dataDiRegistrazione = dataDiRegistrazione;
 	}
 
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 

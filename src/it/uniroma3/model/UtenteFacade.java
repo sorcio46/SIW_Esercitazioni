@@ -16,7 +16,7 @@ public class UtenteFacade {
 	    
 	 //Metodo per la persistenza di un utente
 		public Utente createUtente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,
-		int password) {
+		String password) {
 			Utente utente = new Utente(nome,cognome, dataDiNascita, dataDiRegistrazione, indirizzo, mail, password);
 			em.persist(utente);
 			return utente;
