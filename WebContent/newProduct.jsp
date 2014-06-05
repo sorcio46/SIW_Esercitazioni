@@ -12,32 +12,31 @@
 <h:form>
     <div>Name: <h:inputText value="#{productController.name}" 
                      required="true"
-                     requiredMessage="Name is mandatory"
+                     requiredMessage="Il Nome e' obbligatorio"
                      id="name"/> <h:message for="name" />
 	</div>
     <div>Code: <h:inputText value="#{productController.code}" 
                      required="true"
-                     requiredMessage="Code is mandatory"
+                     requiredMessage="Il Codice e' obbligatorio"
                      id="code"/> <h:message for="code" />
 	</div>
     <div>Prezzo: <h:inputText value="#{productController.price}" 
                      required="true"
-                     requiredMessage="Price is mandatory"
-                     converterMessage="Price must be a number"
+                     requiredMessage="Il Prezzo e' obbligatorio"
+                     converterMessage="Il Prezzo deve essere un numero"
                      id="price"/> <h:message for="price" />
 	</div>
-	<div>Disponibilita: <h:inputTextarea value="#{productController.disponibilita}" 
+	<div>Disponibilita: <h:inputText value="#{productController.disponibilita}" 
     				required="false"
-    				requiredMessage="Price is mandatory"
-    				converterMessage="Price must be a number" 
+    				requiredMessage="La Disponibilita' e' obbligatoria"
+    				converterMessage="La Disponibilita' deve essere un numero" 
     				id="disponibilita"/> <h:message for="disponibilita" /> 
                      
 	</div>
     <div>Descrizione: <h:inputTextarea value="#{productController.description}" 
     				required="false" 
     				cols="20" 
-    				rows="5" /> 
-                     
+    				rows="5" />     
 	</div>
 	<div>
 		<h:commandButton value="Submit"  action="#{productController.createProduct}"/>
