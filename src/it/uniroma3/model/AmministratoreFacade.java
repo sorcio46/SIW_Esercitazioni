@@ -13,7 +13,7 @@ public class AmministratoreFacade {
 	private EntityManager em;
 	
 	//Metodo per la persistenza nel database
-	public Amministratore createAmministratore(String nome, String cognome, String mail,int password){
+	public Amministratore createAmministratore(String nome, String cognome, String mail,String password){
 		Amministratore a = new Amministratore(nome,cognome,mail,password);
 		em.persist(a);
 		return a;

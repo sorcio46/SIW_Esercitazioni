@@ -21,13 +21,13 @@ public class Amministratore {
 	private String mail;
 	
 	@Column(nullable=false)
-	private int password;
+	private String password;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 
-	public Amministratore(String nome, String cognome, String mail,int password) {
+	public Amministratore(String nome, String cognome, String mail,String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.mail = mail;
@@ -62,11 +62,11 @@ public class Amministratore {
 		this.mail = mail;
 	}
 
-	public int getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(int password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
@@ -78,7 +78,7 @@ public class Amministratore {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((mail == null) ? 0 : mail.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + password;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
 

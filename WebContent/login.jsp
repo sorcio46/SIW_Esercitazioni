@@ -9,7 +9,23 @@
 <body>
 	<f:view>
 		<h1><center>SCHERMATA LOGIN</center></h1>
-		
+		<h:form>
+			<div>Email: <h:inputText value"#{amministratoreController.mail}"
+						required="true"
+						requiredMessage="Campo email obbligatorio"
+						id="mail"/>
+						<h:message for="mail"/>
+			</div>
+			<div>Password: <h:inputPassword value"#{amministratoreController.password}"
+						required="true"
+						requiredMessage="Campo password obbligatorio"
+						id="password"/>
+						<h:message for="password"/>
+			</div>
+			<div>
+				<h:commandButton value="Submit" action="#{amministratoreController.createAmministratore}"/>
+			</div>
+		</h:form>
 	</f:view>
 </body>
 </html>
