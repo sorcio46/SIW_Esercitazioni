@@ -5,6 +5,7 @@ import it.uniroma3.model.*;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
 public class AmministratoreController {
@@ -28,17 +29,17 @@ public class AmministratoreController {
 	
 	public String listAmministratori() {
 		this.amministratori = aFacade.getAllAmministratori();
-		return "Amministratori"; 
+		return "amministratori"; 
 	}
 
 	public String findAmministratore() {
 		this.amministratore = aFacade.getAmministratore(id);
-		return "Amministratore";
+		return "amministratore";
 	}
 	
 	public String findAmministratore(Long id) {
 		this.amministratore = aFacade.getAmministratore(id);
-		return "Amministratore";
+		return "amministratore";
 	}
 
 	public Long getId() {

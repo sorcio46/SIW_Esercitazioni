@@ -19,6 +19,7 @@
 		<ul>
 			<li><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un nuovo prodotto nella base di dati</a></li>
 			<li><h:form><h:commandLink action="#{productController.listProducts}" value="Visualizza la base di dati dei prodotti"/></h:form></li>
+			<li><a href='<c:url value="/faces/registraAmministratore.jsp" />'>Inserisci un nuovo amministratore nella base di dati</a></li>
 		</ul>
 		<h2>Realizzato dagli studenti:</h2>
 		<ul>

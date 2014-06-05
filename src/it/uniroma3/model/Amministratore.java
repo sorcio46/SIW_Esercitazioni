@@ -8,26 +8,26 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 
 @Entity
-@NamedQuery(name="trovaTuttiGliAmministratori", query="SELECT a from Amministratore a")
+@NamedQuery(name="findAllAmministratori", query="SELECT a FROM Amministratore a")
 public class Amministratore {
-	
-	@Column(nullable=false)
-	private String cognome;
-	
-	@Column(nullable=false)
-	private String nome;
-	
-	@Column(nullable=false)
-	private String mail;
-	
-	@Column(nullable=false)
-	private String password;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	@Column(nullable=false,name = "cognome")
+	private String cognome;
+	
+	@Column(nullable=false,name = "nome")
+	private String nome;
+	
+	@Column(nullable=false,name = "mail")
+	private String mail;
+	
+	@Column(nullable=false,name = "password")
+	private String password;
 
-	public Amministratore(String nome, String cognome, String mail,String password) {
+	public Amministratore(String nome, String cognome, String mail, String password) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.mail = mail;

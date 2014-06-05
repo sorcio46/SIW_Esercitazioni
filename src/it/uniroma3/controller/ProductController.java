@@ -67,6 +67,14 @@ public class ProductController {
 		this.price = price;
 	}
 
+	public int getDisponibilita() {
+		return disponibilita;
+	}
+
+	public void setDisponibilita(int disponibilita) {
+		this.disponibilita = disponibilita;
+	}
+
 	public String getDescription() {
 		return description;
 	}

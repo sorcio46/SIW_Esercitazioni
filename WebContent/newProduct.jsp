@@ -20,13 +20,20 @@
                      requiredMessage="Code is mandatory"
                      id="code"/> <h:message for="code" />
 	</div>
-    <div>Price: <h:inputText value="#{productController.price}" 
+    <div>Prezzo: <h:inputText value="#{productController.price}" 
                      required="true"
                      requiredMessage="Price is mandatory"
                      converterMessage="Price must be a number"
                      id="price"/> <h:message for="price" />
 	</div>
-    <div>Description: <h:inputTextarea value="#{productController.description}" 
+	<div>Disponibilita: <h:inputTextarea value="#{productController.disponibilita}" 
+    				required="false"
+    				requiredMessage="Price is mandatory"
+    				converterMessage="Price must be a number" 
+    				id="disponibilita"/> <h:message for="disponibilita" /> 
+                     
+	</div>
+    <div>Descrizione: <h:inputTextarea value="#{productController.description}" 
     				required="false" 
     				cols="20" 
     				rows="5" /> 
