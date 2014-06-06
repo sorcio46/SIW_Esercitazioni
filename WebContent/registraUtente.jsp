@@ -45,13 +45,17 @@
 			<div>DataDiRegistrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
 						required="true"
 						requiredMessage="Campo data di registrazione obbligatorio"
-						id="dataDiRegistrazione"/>
+						id="dataDiRegistrazione">
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						</h:inputText>
 						<h:message for="dataDiRegistrazione"/>
 			</div>
 			<div>DataDiNascita: <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"
-						id="dataDiNascita"/>
+						id="dataDiNascita">
+						<f:convertDateTime pattern="yyyy-MM-dd"/>
+						</h:inputText>
 						<h:message for="dataDiNascita"/>
 			</div>
 			<div>
