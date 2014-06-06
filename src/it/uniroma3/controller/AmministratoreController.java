@@ -47,8 +47,8 @@ public class AmministratoreController {
 	public String loginAmministratore(){
 		this.amministratori = aFacade.getAllAmministratori();
 		for(Amministratore am:amministratori){
-			if(mail==am.getMail())
-				if(password==am.getPassword()){
+			if(mail.equals(am.getMail()))
+				if(password.equals(am.getPassword())){
 					this.corrente=am;
 					return "index";
 				}
