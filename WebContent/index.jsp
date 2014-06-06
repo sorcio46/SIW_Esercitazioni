@@ -14,12 +14,15 @@
 	<f:view>
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
 		<h1><center>Benvenuto ${amministratoreController.corrente.mail}</center></h1>
-		<c:if test="${amministratoreController.corrente == null}">
+		<c:if test="${amministratoreController.corrente == null || utenteController.corrente == null}">
 			<h1><center>Non sei registrato? Chiedi a un Amministratore!</center></h1>
 		</c:if>
 		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
 		<c:if test="${amministratoreController.corrente != null}">
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
+		</c:if>
+		<c:if test="${utenteController.corrente != null}">
+			<h1><center><a href='<c:url value="/faces/creaOrdine.jsp" />'>Crea un nuovo ordine</a></center></h1>
 		</c:if>
 		<c:if test="${amministratoreController.corrente != null}">
 			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>

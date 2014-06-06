@@ -23,6 +23,7 @@ public class UtenteController {
 	private Date dataDiRegistrazione;
 	private String password;
 	private Utente utente;
+	private Utente corrente;
 	private List<Utente> utenti;
 	
 	@EJB
@@ -32,6 +33,26 @@ public class UtenteController {
 		this.utente = utenteFacade.createUtente(nome, cognome, dataDiNascita, dataDiRegistrazione, indirizzo, mail, password);
 		return "utente"; 
 	}
+	
+	public String loginUtente(){
+		this.utenti = utenteFacade.getAllUtenti();
+		for(Utente u: utenti){
+			if(mail.equals(u.getMail()))
+				if(password.equals(u.getPassword())){
+					this.corrente=u;
+					return "index";
+				}
+		}
+		return "index";
+	}
+	public Utente getCorrente() {
+		return corrente;
+	}
+
+	public void setCorrente(Utente corrente) {
+		this.corrente = corrente;
+	}
+
 	
 	public String listUtenti() {
 		this.utenti = utenteFacade.getAllUtenti();
