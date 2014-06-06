@@ -11,6 +11,9 @@
 <body>
 	<f:view>
 		<h1><center>SCHERMATA LOGIN</center></h1>
+		<c:if test="${amministratoreController.mail != null}">
+			<h1><center>Hai inserito i dati errati, riprova!</center></h1>
+		</c:if>
 		<h:form>
 			<div>Email: <h:inputText value="#{amministratoreController.mail}"
 						required="true"
