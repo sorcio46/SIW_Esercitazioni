@@ -15,7 +15,7 @@
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
 		<h1><center>Benvenuto ${amministratoreController.corrente.mail}
 		<c:if test="${amministratoreController.corrente != null}">
-			<h:form><h:commandLink action="#{adminController.logoutAmministratore}" value="LOGOUT"/></h:form>
+			<h:form><h:commandLink action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
 			<h:form><h:commandLink action="#{utenteController.logoutUtente}" value="LOGOUT"/></h:form>
