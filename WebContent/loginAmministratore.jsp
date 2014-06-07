@@ -12,7 +12,7 @@
 	<f:view>
 		<h1><center>SCHERMATA LOGIN</center></h1>
 		<h:form>
-			<div>${amministratoreController.errore}</div>
+			<div><font color="#DC143C" size="4">${amministratoreController.errore}</font></div>
 			<div>Email: <h:inputText value="#{amministratoreController.mail}"
 						required="true"
 						requiredMessage="Campo email obbligatorio"
