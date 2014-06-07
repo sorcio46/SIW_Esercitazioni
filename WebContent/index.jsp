@@ -27,7 +27,7 @@
 			<h1><center>Non sei registrato? Chiedi a un Amministratore!</center></h1>
 		</c:if>
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente==null}">
-			<h1><center><a href='<c:url value="/faces/products.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
+			<h1><center><h:form><h:commandLink action="#{productController.listProducts}" value="Visita il nostro Catalogo Prodotti"/></h:form></center></h1>
 		</c:if>
 
 		<c:if test="${amministratoreController.corrente != null}">
