@@ -15,42 +15,36 @@
 			<div>Nome: <h:inputText value="#{utenteController.nome}"
 						required="true"
 						requiredMessage="Campo nome obbligatorio"
-						placeholder="Inserire nome"
 						id="nome"/>
 						<h:message for="nome"/>
 			</div>
 			<div>Cognome: <h:inputText value="#{utenteController.cognome}"
 						required="true"
 						requiredMessage="Campo cognome obbligatorio"
-						placeholder="Inserire cognome"
 						id="cognome"/>
 						<h:message for="cognome"/>
 			</div>
 			<div>Email: <h:inputText value="#{utenteController.mail}"
 						required="true"
 						requiredMessage="Campo email obbligatorio"
-						placeholder="Inserire email"
 						id="mail"/>
 						<h:message for="mail"/>
 			</div>
 			<div>Password: <h:inputSecret value="#{utenteController.password}"
 						required="true"
 						requiredMessage="Campo password obbligatorio"
-						placeholder="Inserire password"
 						id="password"/>
 						<h:message for="password"/>
 			</div>
 			<div>Indirizzo: <h:inputText value="#{utenteController.indirizzo}"
 						required="true"
 						requiredMessage="Campo indirizzo obbligatorio"
-						placeholder="Inserire indirizzo"
 						id="indirizzo"/>
 						<h:message for="indirizzo"/>
 			</div>
 			<div>Data Di Registrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
 						required="true"
 						requiredMessage="Campo data di registrazione obbligatorio"
-						placeholder="Inserire data, formato: yyyy-MM-dd"
 						id="dataDiRegistrazione">
 						<f:convertDateTime pattern="yyyy-MM-dd"/>
 						</h:inputText>
@@ -59,7 +53,6 @@
 			<div>Data Di Nascita: <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"
-						placeholder="Inserire data, formato: yyyy-MM-dd"
 						id="dataDiNascita">
 						<f:convertDateTime pattern="yyyy-MM-dd"/>
 						</h:inputText>
