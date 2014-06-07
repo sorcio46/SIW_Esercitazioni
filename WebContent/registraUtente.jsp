@@ -29,28 +29,28 @@
 			<div>Email: <h:inputText value="#{utenteController.mail}"
 						required="true"
 						requiredMessage="Campo email obbligatorio"
-						ph:placeholder name="Inserire email"
+						placeholder="Inserire email"
 						id="mail"/>
 						<h:message for="mail"/>
 			</div>
 			<div>Password: <h:inputSecret value="#{utenteController.password}"
 						required="true"
 						requiredMessage="Campo password obbligatorio"
-						ph: placeholder name="Inserire password"
+						placeholder="Inserire password"
 						id="password"/>
 						<h:message for="password"/>
 			</div>
 			<div>Indirizzo: <h:inputText value="#{utenteController.indirizzo}"
 						required="true"
 						requiredMessage="Campo indirizzo obbligatorio"
-						ph: placeholder name="Inserire indirizzo"
+						placeholder="Inserire indirizzo"
 						id="indirizzo"/>
 						<h:message for="indirizzo"/>
 			</div>
 			<div>Data Di Registrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
 						required="true"
 						requiredMessage="Campo data di registrazione obbligatorio"
-						ph: placeholder name="Inserire data, formato: yyyy-MM-dd"
+						placeholder="Inserire data, formato: yyyy-MM-dd"
 						id="dataDiRegistrazione">
 						<f:convertDateTime pattern="yyyy-MM-dd"/>
 						</h:inputText>
@@ -59,7 +59,7 @@
 			<div>Data Di Nascita: <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"
-						ph:placeholder name="Inserire data, formato: yyyy-MM-dd"
+						placeholder="Inserire data, formato: yyyy-MM-dd"
 						id="dataDiNascita">
 						<f:convertDateTime pattern="yyyy-MM-dd"/>
 						</h:inputText>
