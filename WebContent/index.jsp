@@ -13,7 +13,8 @@
 <body>
 	<f:view>
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
-		<h1><center>Benvenuto ${amministratoreController.corrente.mail}
+		
+		<h1><center>Benvenuto ${amministratoreController.corrente.mail}${utenteController.corrente.mail}
 		<c:if test="${amministratoreController.corrente != null}">
 			<h:form><h:commandLink action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
 		</c:if>
@@ -21,16 +22,22 @@
 			<h:form><h:commandLink action="#{utenteController.logoutUtente}" value="LOGOUT"/></h:form>
 		</c:if>
 		</center></h1>
+		
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">
 			<h1><center>Non sei registrato? Chiedi a un Amministratore!</center></h1>
 		</c:if>
-		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
+		<c:if test="${amministratoreController.corrente == null && utenteController.corrente==null}">
+			<h1><center><a href='<c:url value="/faces/products.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
+		</c:if>
+
 		<c:if test="${amministratoreController.corrente != null}">
+			<h1><center><a href='<c:url value="/faces/catalogoProdottiAdmin.jsp" />'>Visita il Catalogo Prodotti</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
+			<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il Catalogo Prodotti</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/creaOrdine.jsp" />'>Crea un nuovo ordine</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/consultaOrdini.jsp" />'>Consulta i tuoi Ordini</a></center></h1>
 		</c:if>
@@ -38,6 +45,7 @@
 			<h1><center><a href='<c:url value="/faces/loginUtente.jsp" />'>Effettua il login Utente</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/loginAmministratore.jsp" />'>Effettua il login Amministratore</a></center></h1>	
 		</c:if>
+		
 		<h2>Operazioni per la diagnostica:</h2> 
 		<ul>
 			<li><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un nuovo prodotto nella base di dati</a></li>
