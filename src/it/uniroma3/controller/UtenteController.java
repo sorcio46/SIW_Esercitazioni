@@ -25,6 +25,7 @@ public class UtenteController {
 	private Utente utente;
 	private Utente corrente;
 	private List<Utente> utenti;
+	private String errore;
 	
 	@EJB
 	private UtenteFacade utenteFacade;
@@ -39,9 +40,16 @@ public class UtenteController {
 		for(Utente u: utenti){
 			if(mail.equals(u.getMail()))
 				if(password.equals(u.getPassword())){
-					this.corrente=u;
+					this.corrente = u;
+					this.errore = null;
 					return "index";
 				}
+				else{
+					this.errore="Mail o Password errati";
+				}
+			else{
+				this.errore="Mail o Password errati";
+			}
 		}
 		return "index";
 	}
@@ -161,6 +169,14 @@ public class UtenteController {
 
 	public void setUtenteFacade(UtenteFacade utenteFacade) {
 		this.utenteFacade = utenteFacade;
+	}
+
+	public String getErrore() {
+		return errore;
+	}
+
+	public void setErrore(String errore) {
+		this.errore = errore;
 	}
 
 	

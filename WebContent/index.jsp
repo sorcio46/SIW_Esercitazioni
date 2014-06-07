@@ -43,7 +43,9 @@
 		</c:if>
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">
 			<h1><center><a href='<c:url value="/faces/loginUtente.jsp" />'>Effettua il login Utente</a></center></h1>
-			<h1><center><a href='<c:url value="/faces/loginAmministratore.jsp" />'>Effettua il login Amministratore</a></center></h1>	
+			<h1><center>${utenteController.errore}</center></h1>
+			<h1><center><a href='<c:url value="/faces/loginAmministratore.jsp" />'>Effettua il login Amministratore</a></center></h1>
+			<h1><center>${amministratoreController.errore}</center></h1>	
 		</c:if>
 		
 		<h2>Operazioni per la diagnostica:</h2> 
