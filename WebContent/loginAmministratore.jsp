@@ -12,6 +12,7 @@
 	<f:view>
 		<h1><center>SCHERMATA LOGIN</center></h1>
 		<h:form>
+			<div>${amministratoreController.errore}</div>
 			<div>Email: <h:inputText value="#{amministratoreController.mail}"
 						required="true"
 						requiredMessage="Campo email obbligatorio"
