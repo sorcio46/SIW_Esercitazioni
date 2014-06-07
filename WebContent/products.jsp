@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Prodotti</title>
+<title>Catalogo Prodotti</title>
 </head>
 <body>
 <f:view>
-<h1>Prodotti</h1>
+<h1>Catalogo Prodotti</h1>
 <h:form>
 <table>
 	<tr>
@@ -26,7 +26,6 @@
 	</c:forEach>
 </table>
 </h:form>
-
 </f:view>
 </body>
 </html>

@@ -32,6 +32,16 @@ public class ProductController {
 		this.products = productFacade.getAllProducts();
 		return "products"; 
 	}
+	
+	public String listProductsAdmin() {
+		this.products = productFacade.getAllProducts();
+		return "catalogoProdottiAdmin"; 
+	}
+	
+	public String listProductsUser() {
+		this.products = productFacade.getAllProducts();
+		return "catalogoProdotti"; 
+	}
 
 	public String findProduct() {
 		this.product = productFacade.getProduct(id);
@@ -43,6 +53,11 @@ public class ProductController {
 		return "product";
 	}
 
+	public String updateProduct(Long id){
+		this.product = productFacade.getProduct(id);
+		return "product";
+	}
+	
 	public Long getId() {
 		return id;
 	}

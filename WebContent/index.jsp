@@ -31,13 +31,13 @@
 		</c:if>
 
 		<c:if test="${amministratoreController.corrente != null}">
-			<h1><center><a href='<c:url value="/faces/catalogoProdottiAdmin.jsp" />'>Visita il Catalogo Prodotti</a></center></h1>
+			<h1><center><h:form><h:commandLink action="#{productController.listProductsAdmin}" value="Modifica il Catalogo Prodotti"/></h:form></center></h1>
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
-			<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il Catalogo Prodotti</a></center></h1>
+			<h1><center><h:form><h:commandLink action="#{productController.listProductsUser}" value="Visita il Catalogo Prodotti"/></h:form></center></h1>
 			<h1><center><a href='<c:url value="/faces/creaOrdine.jsp" />'>Crea un nuovo ordine</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/consultaOrdini.jsp" />'>Consulta i tuoi Ordini</a></center></h1>
 		</c:if>

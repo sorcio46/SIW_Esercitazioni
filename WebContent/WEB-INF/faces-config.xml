@@ -10,4 +10,9 @@
 		<managed-bean-class>it.uniroma3.controller.AmministratoreController</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>utenteController</managed-bean-name>
+		<managed-bean-class>it.uniroma3.controller.UtenteController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 </faces-config>
