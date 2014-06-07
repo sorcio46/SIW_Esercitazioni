@@ -15,28 +15,28 @@
 			<div>Nome: <h:inputText value="#{amministratoreController.nome}"
 						required="true"
 						requiredMessage="Campo nome obbligatorio"
-						placeholder="Inserire nome"
+						ph:placeholder name ="Inserire nome"
 						id="nome"/>
 						<h:message for="nome"/>
 			</div>
 			<div>Cognome: <h:inputText value="#{amministratoreController.cognome}"
 						required="true"
 						requiredMessage="Campo cognome obbligatorio"
-						placeholder="Inserire cognome"
+						ph:placeholder name="Inserire cognome"
 						id="cognome"/>
 						<h:message for="cognome"/>
 			</div>
 			<div>Email: <h:inputText value="#{amministratoreController.mail}"
 						required="true"
 						requiredMessage="Campo email obbligatorio"
-						placeholder="Inserire email"
+						ph:placeholder name="Inserire email"
 						id="mail"/>
 						<h:message for="mail"/>
 			</div>
 			<div>Password: <h:inputSecret value="#{amministratoreController.password}"
 						required="true"
 						requiredMessage="Campo password obbligatorio"
-						placeholder="Inserire password"
+						ph:placeholder name="Inserire password"
 						id="password"/>
 						<h:message for="password"/>
 			</div>
