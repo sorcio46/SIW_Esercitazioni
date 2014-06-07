@@ -56,6 +56,11 @@ public class AmministratoreController {
 		return "index";
 	}
 
+	public String logoutAmministratore(){
+		this.corrente=null;
+		return "index";
+	}
+	
 	public Long getId() {
 		return id;
 	}
