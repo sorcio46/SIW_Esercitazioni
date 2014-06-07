@@ -27,15 +27,12 @@
 		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>
 		<c:if test="${amministratoreController.corrente != null}">
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
+			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>
+			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
 			<h1><center><a href='<c:url value="/faces/creaOrdine.jsp" />'>Crea un nuovo ordine</a></center></h1>
-		</c:if>
-		<c:if test="${amministratoreController.corrente != null}">
-			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>
-		</c:if>
-		<c:if test="${amministratoreController.corrente != null}">
-			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
+			<h1><center><a href='<c:url value="/faces/consultaOrdini.jsp" />'>Consulta i tuoi Ordini</a></center></h1>
 		</c:if>
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">
 			<h1><center><a href='<c:url value="/faces/loginUtente.jsp" />'>Effettua il login Utente</a></center></h1>
