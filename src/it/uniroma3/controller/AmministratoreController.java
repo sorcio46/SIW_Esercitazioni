@@ -20,7 +20,8 @@ public class AmministratoreController {
 	private Amministratore amministratore;
 	private Amministratore corrente;
 	private List<Amministratore> amministratori;
-	
+	private String errore;
+
 	@EJB
 	private AmministratoreFacade aFacade;
 	
@@ -50,10 +51,15 @@ public class AmministratoreController {
 			if(mail.equals(am.getMail()))
 				if(password.equals(am.getPassword())){
 					this.corrente=am;
+					this.errore=null;
 					return "index";
 				}
+				else
+					this.errore="Mail o Password errati";
+			else
+				this.errore="Mail o Password errati";
 		}
-		return "index";
+		return "loginAmministratore";
 	}
 
 	public String logoutAmministratore(){
@@ -133,4 +139,11 @@ public class AmministratoreController {
 		this.aFacade = aFacade;
 	}
 	
+	public String getErrore() {
+		return errore;
+	}
+
+	public void setErrore(String errore) {
+		this.errore = errore;
+	}
 }
