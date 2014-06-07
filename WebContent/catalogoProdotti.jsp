@@ -4,11 +4,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Catalogo prodotti</title>
 </head>
 <body>
 	<f:view>
-		<h1><center>SCHERMATA CATALOGO PRODOTTI</center></h1>
+		<h1><center><font color="blue" size="4" face="Verdana" >CATALOGO PRODOTTI</font></center></h1>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</f:view>
 </body>
 </html>
