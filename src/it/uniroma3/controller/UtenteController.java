@@ -51,7 +51,7 @@ public class UtenteController {
 				this.errore="Mail o Password errati";
 			}
 		}
-		return "index";
+		return "loginUtente";
 	}
 	
 	public String logoutUtente(){
