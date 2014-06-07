@@ -52,10 +52,11 @@ public class ProductController {
 		this.product = productFacade.getProduct(id);
 		return "product";
 	}
-
-	public String updateProduct(Long id){
-		this.product = productFacade.getProduct(id);
-		return "product";
+	
+	public String deleteProduct(){
+		productFacade.deleteProduct(id);
+		this.products = productFacade.getAllProducts();
+		return "catalogoProdottiAdmin";
 	}
 	
 	public Long getId() {

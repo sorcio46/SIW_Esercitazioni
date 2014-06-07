@@ -14,15 +14,20 @@
 <h:form>
 <table>
 	<tr>
-		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th>
+		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th><th>Azioni disponibili</th>
 	</tr>
 	<c:forEach var="product" items="#{productController.products}">
 		<tr>
 		<td>
 		<h:commandLink action="#{productController.findProduct}" value="#{product.name}"><f:param name="id" value="#{product.id}" />
 		</h:commandLink>
-		</td><td>${product.price}</td>
+		</td>
+		<td>${product.price}</td>
 		<td>${product.disponibilita}</td>
+		<td>
+		<h:commandLink action="#{productController.deleteProduct}" value="CANCELLA"><f:param name="id" value="#{product.id}" />
+		</h:commandLink>
+		</td>
 		</tr>
 	</c:forEach>
 </table>

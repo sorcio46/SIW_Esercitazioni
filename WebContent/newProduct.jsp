@@ -5,17 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>New Product</title>
+<title>Nuovo Prodotto</title>
 </head>
 <body>
 <f:view>
 <h:form>
-    <div>Name: <h:inputText value="#{productController.name}" 
+    <div>Nome: <h:inputText value="#{productController.name}" 
                      required="true"
                      requiredMessage="Il Nome e' obbligatorio"
                      id="name"/> <h:message for="name" />
 	</div>
-    <div>Code: <h:inputText value="#{productController.code}" 
+    <div>Codice: <h:inputText value="#{productController.code}" 
                      required="true"
                      requiredMessage="Il Codice e' obbligatorio"
                      id="code"/> <h:message for="code" />
