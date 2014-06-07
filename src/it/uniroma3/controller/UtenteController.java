@@ -45,6 +45,12 @@ public class UtenteController {
 		}
 		return "index";
 	}
+	
+	public String logoutUtente(){
+		this.corrente=null;
+		return "index";
+	}
+	
 	public Utente getCorrente() {
 		return corrente;
 	}

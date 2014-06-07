@@ -14,7 +14,7 @@
 <div>Cognome: ${utenteController.utente.cognome}</div>
 <div>Data di nascita: ${utenteController.utente.dataDiNascita}</div>
 <div>Data di registrazione: ${utenteController.utente.dataDiRegistrazione}</div>
-<div>Indirizzo: ${utenteController.utente.indirizzo</div>
+<div>Indirizzo: ${utenteController.utente.indirizzo}</div>
 </f:view>
 </body>
 </html>

@@ -13,8 +13,15 @@
 <body>
 	<f:view>
 		<h1><center>PROGETTO ESAME SIW GIUGNO 2014</center></h1>
-		<h1><center>Benvenuto ${amministratoreController.corrente.mail}</center></h1>
-		<c:if test="${amministratoreController.corrente == null || utenteController.corrente == null}">
+		<h1><center>Benvenuto ${amministratoreController.corrente.mail}
+		<c:if test="${amministratoreController.corrente != null}">
+			<h:form><h:commandLink action="#{amministratoreController.logoutAmministratore}" value="LOGOUT"/></h:form>
+		</c:if>
+		<c:if test="${utenteController.corrente != null}">
+			<h:form><h:commandLink action="#{utenteController.logoutUtente}" value="LOGOUT"/></h:form>
+		</c:if>
+		</center></h1>
+		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">
 			<h1><center>Non sei registrato? Chiedi a un Amministratore!</center></h1>
 		</c:if>
 		<h1><center><a href='<c:url value="/faces/catalogoProdotti.jsp" />'>Visita il nostro Catalogo Prodotti</a></center></h1>

@@ -42,7 +42,7 @@
 						id="indirizzo"/>
 						<h:message for="indirizzo"/>
 			</div>
-			<div>DataDiRegistrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
+			<div>Data Di Registrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
 						required="true"
 						requiredMessage="Campo data di registrazione obbligatorio"
 						id="dataDiRegistrazione">
@@ -50,7 +50,7 @@
 						</h:inputText>
 						<h:message for="dataDiRegistrazione"/>
 			</div>
-			<div>DataDiNascita: <h:inputText value="#{utenteController.dataDiNascita}"
+			<div>Data Di Nascita: <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"
 						id="dataDiNascita">
@@ -59,7 +59,7 @@
 						<h:message for="dataDiNascita"/>
 			</div>
 			<div>
-				<h:commandButton value="Submit" action="#{utenteamministratoreController.createUtente}"/>
+				<h:commandButton value="Submit" action="#{utenteController.createUtente}"/>
 			</div>
 			<h:commandLink action="#{utenteController.listUtente}" value="Lista degli Utenti" />
 		</h:form>
