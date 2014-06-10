@@ -27,6 +27,7 @@
 		<td>${product.disponibilita}</td>
 		<td>
 		<h:commandLink action="#{ordineController.createOrdine}" value="Aggiungi al Carrello"><f:param name="id" value="#{product.id}" />
+		//Sistemare collegamento del tasto aggiungi al carrello
 		</h:commandLink>
 		</td>
 		</tr>
