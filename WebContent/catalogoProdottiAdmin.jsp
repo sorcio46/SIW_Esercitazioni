@@ -9,12 +9,12 @@
 </head>
 <body>
 <f:view>
-<h1>Catalogo Prodotti</h1>
-<h2>Benvenuto ${amministratoreController.corrente.nome} ${amministratoreController.corrente.cognome}</h2>
+<h1><center><font color="blue" size="8" face="Verdana" >CATALOGO PRODOTTI</font></center></h1>
+<h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${amministratoreController.corrente.nome} ${amministratoreController.corrente.cognome}</font></center></h2>
 <h:form>
 <table>
 	<tr>
-		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th><th>Azioni disponibili</th>
+		<th><font color="#008800" size="4" face="Arial" >Nome </font></th> <th><font color="#008800" size="4" face="Arial" >Prezzo </font></th> <th><font color="#008800" size="4" face="Arial" >Disponibilità </font></th> <th><font color="#008800" size="4" face="Arial" >Azioni Disponibili</font></th>
 	</tr>
 	<c:forEach var="product" items="#{productController.products}">
 		<tr>
