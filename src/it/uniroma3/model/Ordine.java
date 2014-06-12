@@ -32,7 +32,7 @@ public class Ordine {
 	private double totale;
 	@ManyToOne
 	private Utente utente;
-	@OneToMany(mappedBy = "Ordine")
+	@OneToMany(mappedBy = "ordine")
 	private List<RigaOrdine> righeOrdine;
 	
 	

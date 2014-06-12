@@ -1,7 +1,6 @@
 package it.uniroma3.model;
 
 import java.util.*;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +27,7 @@ public class Utente {
 	private String mail;
 	@Column(nullable = false)
 	private String password;
-	@OneToMany(mappedBy = "Utente")
+	@OneToMany(mappedBy = "utente")
 	private List<Ordine> ordini;
 	
 	@Id
