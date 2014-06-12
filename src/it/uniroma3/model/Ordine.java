@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name = "TrovaTuttiGliOrdini", query = "SELECT o FROM Ordine o")
@@ -28,6 +30,11 @@ public class Ordine {
 	private Date dataEvasioneOrdine;
 	@Column(nullable = false)
 	private double totale;
+	@ManyToOne
+	private Utente utente;
+	@OneToMany(mappedBy = "Ordine")
+	private List<RigaOrdine> righeOrdine;
+	
 	
 	public Ordine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
 		this.dataAperturaOrdine = dataAperturaOrdine;
@@ -82,6 +89,25 @@ public class Ordine {
 		this.totale = totale;
 	}
 
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
+	}
+
+	public List<RigaOrdine> getRigheOrdine() {
+		return righeOrdine;
+	}
+
+	public void setRigheOrdine(List<RigaOrdine> righeOrdine) {
+		this.righeOrdine = righeOrdine;
+	}
+
+	public void addRigaOrdine(RigaOrdine r){
+		this.righeOrdine.add(r);
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

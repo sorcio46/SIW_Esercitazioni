@@ -4,12 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQuery(name="trovaTutteLeRigheOrdine", query="SELECT r from RigaOrdine r")
 public class RigaOrdine {
+	
+	@OneToOne
 	@Column(nullable=false)
 	private Product prodotto;
 	
@@ -19,6 +23,9 @@ public class RigaOrdine {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	
+	@ManyToOne
+	private Ordine ordine;
 	
 	public RigaOrdine(Product p, int q){
 		this.prodotto=p;
@@ -43,6 +50,14 @@ public class RigaOrdine {
 
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
+	}
+
+	public Ordine getOrdine() {
+		return ordine;
+	}
+
+	public void setOrdine(Ordine ordine) {
+		this.ordine = ordine;
 	}
 
 	@Override

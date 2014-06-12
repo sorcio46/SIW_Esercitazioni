@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
+import javax.persistence.OneToOne;
 
 	@Entity
 	@NamedQuery(name = "findAllProducts", query = "SELECT p FROM Product p")
@@ -29,6 +30,9 @@ import javax.persistence.Column;
 	private int disponibilita;
 	
 	private String fornitore;
+	
+	@OneToOne
+	private RigaOrdine rigaOrdine;
 	
 	public Product() {
     }
@@ -93,6 +97,14 @@ import javax.persistence.Column;
 
 	public void setFornitore(String fornitore) {
 		this.fornitore = fornitore;
+	}
+
+	public RigaOrdine getRigaOrdine() {
+		return rigaOrdine;
+	}
+
+	public void setRigaOrdine(RigaOrdine rigaOrdine) {
+		this.rigaOrdine = rigaOrdine;
 	}
 
 	public boolean equals(Object obj) {
