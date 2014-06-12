@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 @NamedQuery(name = "TrovaTuttiGliUtenti", query = "SELECT u FROM Utente u")
 public class Utente {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 	@Column(nullable = false)
 	private String cognome;
 	@Column(nullable = false)
@@ -27,12 +30,9 @@ public class Utente {
 	private String mail;
 	@Column(nullable = false)
 	private String password;
-	@OneToMany(mappedBy = "utente")
-	private List<Ordine> ordini;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@OneToMany(mappedBy="utente")
+	private List<Ordine> ordini;
 
 	public Utente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,
 			String password) {
