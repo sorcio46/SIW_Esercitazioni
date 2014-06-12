@@ -28,15 +28,18 @@ import javax.persistence.Column;
 	
 	private int disponibilita;
 	
+	private String fornitore;
+	
 	public Product() {
     }
 
-	public Product(String name, Float price, String description, String code, int disponibilita) {
+	public Product(String name, Float price, String description, String code, int disponibilita, String fornitore) {
         this.name = name;
         this.price = price;
         this.description = description;
         this.code = code;
         this.setDisponibilita(disponibilita);
+        this.fornitore=fornitore;
 	}      
     
     public Long getId() {
@@ -81,6 +84,15 @@ import javax.persistence.Column;
 
 	public void setDisponibilita(int disponibilita) {
 		this.disponibilita = disponibilita;
+	}
+
+	
+	public String getFornitore() {
+		return fornitore;
+	}
+
+	public void setFornitore(String fornitore) {
+		this.fornitore = fornitore;
 	}
 
 	public boolean equals(Object obj) {
