@@ -30,6 +30,7 @@ public class Ordine {
 	private Date dataEvasioneOrdine;
 	@Column(nullable = false)
 	private double totale;
+	
 	@ManyToOne
 	private Utente utente;
 	@OneToMany(mappedBy = "ordine")
