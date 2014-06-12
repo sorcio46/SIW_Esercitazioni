@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Schermata Login</title>
+<title>Schermata Login Amministratore</title>
 </head>
 <body>
 	<f:view>
-		<h1><center>SCHERMATA LOGIN</center></h1>
+		<h1><center>SCHERMATA LOGIN AMMINISTRATORE</center></h1>
 		<h:form>
 			<div><font color="#DC143C" size="4">${amministratoreController.errore}</font></div>
 			<div>Email: <h:inputText value="#{amministratoreController.mail}"

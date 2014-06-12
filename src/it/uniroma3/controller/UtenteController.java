@@ -44,12 +44,10 @@ public class UtenteController {
 					this.errore = null;
 					return "index";
 				}
-				else{
+				else
 					this.errore="Mail o Password errati";
-				}
-			else{
+			else
 				this.errore="Mail o Password errati";
-			}
 		}
 		return "loginUtente";
 	}
