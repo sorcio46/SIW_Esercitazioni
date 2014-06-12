@@ -38,6 +38,12 @@
     				cols="20" 
     				rows="5" />     
 	</div>
+	<div>Fornitore: <h:inputText value="#{productController.fornitore}" 
+    				required="false"
+    				requiredMessage="Il fornitore e' obbligatorio"
+    				id="fornitore"/> <h:message for="fornitore" /> 
+                     
+	</div>
 	<div>
 		<h:commandButton value="Submit"  action="#{productController.createProduct}"/>
 	</div>

@@ -17,6 +17,7 @@ public class ProductController {
 	private String description;
 	private String code;
 	private int disponibilita;
+	private String fornitore;
 	private Product product;
 	private List<Product> products;
 	
@@ -24,7 +25,7 @@ public class ProductController {
 	private ProductFacade productFacade;
 	
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description, disponibilita);
+		this.product = productFacade.createProduct(name, code, price, description, disponibilita,fornitore);
 		return "product"; 
 	}
 	
@@ -97,6 +98,22 @@ public class ProductController {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getFornitore() {
+		return fornitore;
+	}
+
+	public void setFornitore(String fornitore) {
+		this.fornitore = fornitore;
+	}
+
+	public ProductFacade getProductFacade() {
+		return productFacade;
+	}
+
+	public void setProductFacade(ProductFacade productFacade) {
+		this.productFacade = productFacade;
 	}
 
 	public String getCode() {

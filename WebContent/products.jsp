@@ -13,15 +13,17 @@
 <h:form>
 <table>
 	<tr>
-		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th>
+		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th><th>Fornitore</th>
 	</tr>
 	<c:forEach var="product" items="#{productController.products}">
 		<tr>
 		<td>
 		<h:commandLink action="#{productController.findProduct}" value="#{product.name}"><f:param name="id" value="#{product.id}" />
 		</h:commandLink>
-		</td><td>${product.price}</td>
+		</td>
+		<td>${product.price}</td>
 		<td>${product.disponibilita}</td>
+		<td>${product.fornitore}</td>
 		</tr>
 	</c:forEach>
 </table>

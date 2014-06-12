@@ -12,6 +12,7 @@
 <div>Prezzo: ${productController.product.price}</div>
 <div>Descrizione: ${productController.product.description}</div>
 <div>Disponibilità: ${productController.product.disponibilita}</div>
+<div>Fornitore: ${productController.product.fornitore}</div>
 </f:view>
 </body>
 </html>
