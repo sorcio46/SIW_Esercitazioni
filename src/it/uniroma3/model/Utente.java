@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQuery(name = "TrovaTuttiGliUtenti", query = "SELECT u FROM Utente u")
@@ -27,6 +28,8 @@ public class Utente {
 	private String mail;
 	@Column(nullable = false)
 	private String password;
+	@OneToMany(mappedBy = "Utente")
+	private List<Ordine> ordini;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -100,6 +103,18 @@ public class Utente {
 		this.password = password;
 	}
 	
+	public List<Ordine> getOrdini() {
+		return ordini;
+	}
+
+	public void setOrdini(List<Ordine> ordini) {
+		this.ordini = ordini;
+	}
+	
+	public void addOrdine(Ordine o){
+		this.ordini.add(o);
+	}
+
 	public long getId() {
 		return id;
 	}
