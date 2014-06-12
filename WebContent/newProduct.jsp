@@ -48,7 +48,8 @@
 		<h:commandButton value="Submit"  action="#{productController.createProduct}"/>
 	</div>
 	<h:commandLink action="#{productController.listProducts}"
-						value="List all Products" />
+						value="Lista dei prodotti" />
+	<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 </h:form>
 </f:view>
 </body>

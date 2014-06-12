@@ -63,6 +63,7 @@
 			</div>
 			<h:commandLink action="#{utenteController.listUtente}" value="Lista degli Utenti" />
 		</h:form>
+		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 	</f:view>
 
 </body>

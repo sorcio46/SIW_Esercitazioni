@@ -35,6 +35,7 @@
 			</div>
 			<h:commandLink action="#{fornitoreController.listFornitori}" value="Lista dei Fornitori" />
 		</h:form>
+		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 	</f:view>
 
 </body>

@@ -28,6 +28,7 @@
 	</c:forEach>
 </table>
 </h:form>
+<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 </f:view>
 </body>
 </html>

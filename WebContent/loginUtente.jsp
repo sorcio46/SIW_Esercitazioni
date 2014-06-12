@@ -29,6 +29,7 @@
 				<h:commandButton value="Invia" action="#{utenteController.loginUtente}"/>
 			</div>
 		</h:form>
+		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 	</f:view>
 </body>
 </html>
