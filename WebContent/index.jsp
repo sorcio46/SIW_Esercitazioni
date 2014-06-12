@@ -35,6 +35,7 @@
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/evadiOrdine.jsp" />'>Evadi Ordine</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
+			<h1><center><a href='<c:url value="/faces/registraFornitore.jsp" />'>Registra un Fornitore</a></center></h1>
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
 			<h1><center><h:form><h:commandLink action="#{productController.listProductsUser}" value="Visita il Catalogo Prodotti"/></h:form></center></h1>
