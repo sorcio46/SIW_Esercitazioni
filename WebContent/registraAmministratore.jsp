@@ -41,6 +41,7 @@
 			</div>
 			<h:commandLink action="#{amministratoreController.listAmministratori}" value="Lista degli Amministratori" />
 		</h:form>
+		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 	</f:view>
 </body>
 </html>
