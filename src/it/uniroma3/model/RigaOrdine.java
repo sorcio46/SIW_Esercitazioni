@@ -12,6 +12,9 @@ import javax.persistence.OneToOne;
 @Entity
 @NamedQuery(name="trovaTutteLeRigheOrdine", query="SELECT r from RigaOrdine r")
 public class RigaOrdine {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	
 	@OneToOne
 	@Column(nullable=false)
@@ -20,18 +23,17 @@ public class RigaOrdine {
 	@Column(nullable=false)
 	private int quantita;
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
-	
 	@ManyToOne
 	private Ordine ordine;
 	
 	public RigaOrdine(Product p, int q){
 		this.prodotto=p;
-		this.quantita=q;
+		this.setQuantita(q);
 	}
 
+	public RigaOrdine(){
+	}
+	
 	public Long getId() {
 		return this.id;
 	}

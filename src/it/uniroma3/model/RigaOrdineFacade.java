@@ -29,6 +29,11 @@ public class RigaOrdineFacade {
 		return l;
 	}
 	
+	public void updateRigaOrdine(Long id){
+		RigaOrdine r = getRigaOrdine(id);
+		updateRigaOrdine(r);
+	}
+	
 	public void updateRigaOrdine(RigaOrdine r){
 		em.merge(r);
 	}
