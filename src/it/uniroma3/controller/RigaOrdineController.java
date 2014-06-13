@@ -11,6 +11,7 @@ public class RigaOrdineController {
 	
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
+	private Long pid;
 	private Product prodotto;
 	private int quantita;
 	private RigaOrdine rigaordine;
@@ -18,10 +19,13 @@ public class RigaOrdineController {
 	
 	@EJB
 	private RigaOrdineFacade rFacade;
+	@EJB
+	private ProductFacade pFacade;
 	
-	public String createrigaordine() {
-		this.rigaordine = rFacade.createRigaOrdine(prodotto, quantita);
-		return "RigaOrdine"; 
+	public String creaRigaOrdine(){
+		this.prodotto = this.pFacade.getProduct(pid);
+		this.rigaordine = this.rFacade.createRigaOrdine(prodotto, quantita);
+		return "creaOrdine"; 
 	}
 	
 	public String listrigheordini() {
