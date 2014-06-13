@@ -12,10 +12,16 @@
 <f:view>
 <h2>Dettagli</h2>
 <div>Prodotto: ${ordineController.rigaordine.prodotto.name}</div>
-<div>Quantita: ${ordineController.rigaordine.quantita}</div>
-<ul>
-	<li><a href='<c:url value="/faces/creaOrdine.jsp" />'>Torna alla schermata della creazione Ordine</a></li>
-</ul>
+<div>Quantità: <h:inputText value="#{ordineController.quantita}" 
+    		required="false"
+    		requiredMessage="La Quantita' e' obbligatoria"
+    		converterMessage="La Quantita' deve essere maggiore o uguale a 1" 
+    		id="quantita"/> <h:message for="quantita" /> 
+</div>
+<h:form>
+<h:commandLink action="#{ordineController.confermaRigaOrdine}" value="Aggiungi al Carrello">
+</h:commandLink>
+</h:form>
 </f:view>
 </body>
 </html>

@@ -48,21 +48,16 @@ public class OrdineController {
 
 	public String aggiungiRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine = this.rFacade.createRigaOrdine(this.prodotto, this.quantita);
-		/*
-		if(!this.righeOrdine.isEmpty()){
-			if(this.righeOrdine.contains(this.rigaordine)){
-				for(RigaOrdine r: this.righeOrdine){
-					if(r.equals(this.righeOrdine))
-						r.setQuantita(r.getQuantita()+this.rigaordine.getQuantita());
-						//this.rFacade.updateRigaOrdine(r.getId());
-				}
-			}
-		}
-		else
-		*/	
-		this.righeOrdine.add(this.rigaordine);
+		this.rigaordine=new RigaOrdine();
+		this.rigaordine.setProdotto(prodotto);
 		return "riepilogoRigaOrdine"; 
+	}
+	
+	public String confermaRigaOrdine(){
+		this.prodotto=this.rigaordine.getProdotto();
+		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
+		this.righeOrdine.add(this.rigaordine);
+		return "creaOrdine";
 	}
 	
 	public String listOrdini() {

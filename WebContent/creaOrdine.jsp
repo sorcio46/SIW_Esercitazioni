@@ -20,7 +20,6 @@
 		<th><font color="#008800" size="4" face="Arial" >Prezzo </font></th> 
 		<th><font color="#008800" size="4" face="Arial" >Disponibilità </font></th> 
 		<th><font color="#008800" size="4" face="Arial" >Fornitore </font></th>
-		<th><font color="#008800" size="4" face="Arial" >Quantita' </font></th> 
 		<th><font color="#008800" size="4" face="Arial" >Azioni Disponibili</font></th>
 	</tr>
 	<c:forEach var="product" items="#{productController.products}">
@@ -33,14 +32,6 @@
 		<td>${product.price}</td>
 		<td>${product.disponibilita}</td>
 		<td>${product.fornitore}</td>
-		<td>
-		<div><h:inputText value="#{ordineController.quantita}" 
-    				required="false"
-    				requiredMessage="La Quantita' e' obbligatoria"
-    				converterMessage="La Quantita' deve essere maggiore o uguale a 1" 
-    				id="quantita"/> <h:message for="quantita" /> 
-		</div>
-		</td>
 		<td>
 		<h:commandLink action="#{ordineController.aggiungiRigaOrdine}" value="Aggiungi al Carrello">
 		<f:param name="pid" value="#{product.id}" />

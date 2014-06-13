@@ -31,6 +31,9 @@ public class RigaOrdine {
 		this.setQuantita(q);
 	}
 
+	public RigaOrdine(){
+	}
+	
 	public Long getId() {
 		return this.id;
 	}
