@@ -25,7 +25,7 @@ public class Ordine {
 	private Utente utente;
 	
 	@OneToMany (fetch = FetchType.EAGER)
-    @JoinColumn (name = "order_id")
+    @JoinColumn (name = "ordine_id")
 	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
 	
 	public Ordine(List<RigaOrdine> righeOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
