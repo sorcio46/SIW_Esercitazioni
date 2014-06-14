@@ -16,6 +16,7 @@ public class RigaOrdineController {
 	private int quantita;
 	private RigaOrdine rigaordine;
 	private List<RigaOrdine> righeordini;
+	private Ordine ordine;
 	
 	@EJB
 	private RigaOrdineFacade rFacade;
@@ -24,7 +25,7 @@ public class RigaOrdineController {
 	
 	public String creaRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine = this.rFacade.createRigaOrdine(prodotto, quantita);
+		this.rigaordine = this.rFacade.createRigaOrdine(prodotto, quantita, ordine);
 		return "creaOrdine"; 
 	}
 	
