@@ -106,6 +106,25 @@ public class OrdineController {
 		return "ordine";
 	}
 	
+	public String evadiOrdine(){
+		Ordine o = this.ordineFacade.getOrdine(this.id);
+		if(o.verificaDisponibilita()){
+			o.evadiOrdine();
+			this.ordineFacade.updateOrdine(o);
+			this.aggiornaMagazzino(o);
+		}
+		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
+		return "ordini";
+	}
+	
+	public void aggiornaMagazzino(Ordine o){
+		for(RigaOrdine r : o.getRigheOrdine()){
+			Product p = r.getProdotto();
+			p.setDisponibilita(p.getDisponibilita()-r.getQuantita());
+			this.pFacade.updateProduct(p);
+		}
+	}
+	
 	public String getUtenteDaOrdine(){
 		try{
 			this.ordine=this.ordineFacade.getOrdine(this.id);

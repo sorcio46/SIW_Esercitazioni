@@ -164,4 +164,16 @@ public class Ordine {
 		return true;
 	}
 
+	public void evadiOrdine(){
+		this.dataEvasioneOrdine=new Date();
+	}
+	
+	public boolean verificaDisponibilita(){
+		for(RigaOrdine r : this.getRigheOrdine()){
+			Product c = r.getProdotto();
+			if(c.getDisponibilita()<r.getQuantita())
+				return false;
+		}
+		return true;
+	}
 }
