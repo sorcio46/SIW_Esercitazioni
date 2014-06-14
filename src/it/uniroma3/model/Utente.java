@@ -32,7 +32,7 @@ public class Utente {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany (mappedBy="customer", fetch=FetchType.EAGER)
+	@OneToMany (mappedBy="utente", fetch=FetchType.EAGER)
 	private List<Ordine> ordini;
 
 	public Utente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,
