@@ -36,6 +36,11 @@ public class Ordine {
 		this.totale = totale;
 		this.utente = u;
 	}
+	
+	public Ordine(List<RigaOrdine> righeOrdine, Utente u){
+		this.righeOrdine = righeOrdine;
+		this.utente = u;
+	}
 
 	public List<RigaOrdine> getRigheOrdine() {
 		return righeOrdine;
@@ -91,6 +96,13 @@ public class Ordine {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+	
+	public boolean isEvaso(){
+		if(getDataEvasioneOrdine()==null || getDataEvasioneOrdine().equals(getDataAperturaOrdine()))
+			return false;
+		else
+			return true;
 	}
 
 	@Override
