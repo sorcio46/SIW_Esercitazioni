@@ -23,6 +23,7 @@ public class OrdineController {
 	
 	@ManagedProperty(value= "#{sessionScope['ordineCorrente']}")
 	private Ordine ordineCorrente;
+	
 	private Ordine ordine;
 	
 	@ManagedProperty(value = "#{param.pid}")
@@ -37,7 +38,7 @@ public class OrdineController {
 	private int quantita;	
 	private Product prodotto;
 	private List<Ordine> ordini;
-	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
+	private List<RigaOrdine> righeOrdine;
 	
 	private Date dataAperturaOrdine;
 	private Date dataChiusuraOrdine;
@@ -65,13 +66,15 @@ public class OrdineController {
 	public String inizializzaOrdine(){
 		
 		this.products = pFacade.getAllProducts();
-		utente = uFacade.getUtente(uid);
+		this.utente = uFacade.getUtente(uid);
 		
 		dataAperturaOrdine=new Date();
 		dataChiusuraOrdine=new Date();
 		dataEvasioneOrdine=new Date();
 		
-		this.ordineCorrente = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
+		this.righeOrdine = new ArrayList<RigaOrdine>();
+		this.ordine.toString();
+		this.ordineCorrente=new Ordine(this.righeOrdine, this.utente);
 		return "creaOrdine";
 	}
 
