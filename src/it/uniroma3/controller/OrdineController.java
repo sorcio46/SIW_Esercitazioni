@@ -57,9 +57,9 @@ public class OrdineController {
 	
 	public String confermaRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
+		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita, this.ordine);
 		this.righeOrdine.add(this.rigaordine);
-		return "index";
+		return "rigaOrdine";
 	}
 	
 	public String listOrdini() {

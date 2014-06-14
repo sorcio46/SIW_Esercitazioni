@@ -11,8 +11,8 @@ public class RigaOrdineFacade {
 	@PersistenceContext(unitName="siw-progetto")
 	private EntityManager em;
 	
-	public RigaOrdine createRigaOrdine(Product p, int q){
-		RigaOrdine r = new RigaOrdine(p,q);
+	public RigaOrdine createRigaOrdine(Product p, int q, Ordine o){
+		RigaOrdine r = new RigaOrdine(p,q,o);
 		em.persist(r);
 		return r;
 	}

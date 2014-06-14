@@ -26,9 +26,10 @@ public class RigaOrdine {
 	@ManyToOne
 	private Ordine ordine;
 	
-	public RigaOrdine(Product p, int q){
+	public RigaOrdine(Product p, int q, Ordine o){
 		this.prodotto=p;
 		this.setQuantita(q);
+		this.ordine=o;
 	}
 
 	public RigaOrdine(){
