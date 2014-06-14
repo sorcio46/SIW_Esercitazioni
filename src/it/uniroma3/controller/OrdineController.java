@@ -14,17 +14,26 @@ import it.uniroma3.model.UtenteFacade;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class OrdineController {
 
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
+	private int quantita;	
+	private Product prodotto;
+	private List<Ordine> ordini;
+	private List<RigaOrdine> righeOrdine;
+	private Date dataAperturaOrdine;
+	private Date dataChiusuraOrdine;
+	private Date dataEvasioneOrdine;
+	private double totale;
+	private Ordine ordine;
+	private Utente utente;
 	
 	@ManagedProperty(value= "#{sessionScope['ordineCorrente']}")
 	private Ordine ordineCorrente;
-	
-	private Ordine ordine;
 	
 	@ManagedProperty(value = "#{param.pid}")
 	private Long pid;
@@ -34,18 +43,7 @@ public class OrdineController {
 	
 	@ManagedProperty(value= "#{sessionScope['rigaordine']}")
 	private RigaOrdine rigaordine;
-	
-	private int quantita;	
-	private Product prodotto;
-	private List<Ordine> ordini;
-	private List<RigaOrdine> righeOrdine;
-	
-	private Date dataAperturaOrdine;
-	private Date dataChiusuraOrdine;
-	private Date dataEvasioneOrdine;
-	private double totale;
-	private Utente utente;
-	
+		
 	private List<Product> products;
 	
 	@EJB
@@ -68,45 +66,59 @@ public class OrdineController {
 		this.products = pFacade.getAllProducts();
 		this.utente = uFacade.getUtente(uid);
 		
-		dataAperturaOrdine=new Date();
-		dataChiusuraOrdine=new Date();
-		dataEvasioneOrdine=new Date();
-		
 		this.righeOrdine = new ArrayList<RigaOrdine>();
-		this.ordine.toString();
-		this.ordineCorrente=new Ordine(this.righeOrdine, this.utente);
+		Ordine o=new Ordine(this.righeOrdine, this.utente);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", o);
 		return "creaOrdine";
 	}
 
+	public String aggiungiAltraRigaOrdine(){
+		this.products = pFacade.getAllProducts();
+		return "creaOrdine";
+	}
+	
 	public String aggiungiRigaOrdine(){
 		this.ordine = null;
 		this.prodotto = this.pFacade.getProduct(pid);
-		return "riepilogoRigaOrdine"; 
+		//ordineCorrente=(Ordine)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(ordineCorrente);
+		return "riepilogoRigaOrdine";
+		//OK
 	}
 	
 	public String confermaRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
 		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
-		//QUI FA NULL POINTER EXCEPTION
-		this.ordineCorrente.getRigheOrdine().add(this.rigaordine);
+		ordineCorrente.aggiungiRigaOrdine(this.rigaordine);
 		return "rigaOrdine";
+		//OK
 	}
 	
 	public String chiudiOrdine(){
 		
-		for(RigaOrdine ro : this.ordineCorrente.getRigheOrdine()){
+		for(RigaOrdine ro : ordineCorrente.getRigheOrdine()){
 			double prezzo = ro.getProdotto().getPrice();
 			totale = totale + (prezzo*ro.getQuantita());
 		}
 		
-		this.ordineCorrente.setTotale(totale);
+		ordineCorrente.setTotale(totale);
 		
-		for(RigaOrdine ro : righeOrdine){
-			ro.setOrdine(this.ordineCorrente);
+		for(RigaOrdine ro : ordineCorrente.getRigheOrdine()){
+			ro.setOrdine(ordineCorrente);
 			rFacade.updateRigaOrdine(ro.getId());
 		}
 		
-		return "ordine";
+		dataAperturaOrdine=new Date();
+		dataChiusuraOrdine=new Date();
+		dataEvasioneOrdine=new Date();
+		
+		ordineCorrente.toString();
+		//QUI FA NULL POINTER EXCEPION
+		ordineFacade.persistOrdine(ordineCorrente);
+		//ordineFacade.persistOrdine(ordineCorrente);
+		//ordineCorrente=ordineFacade.createOrdine(ordineCorrente.getRigheOrdine(),dataAperturaOrdine,dataChiusuraOrdine,dataEvasioneOrdine,ordineCorrente.getTotale(),ordineCorrente.getUtente());
+		
+		return "index";
 	}
 	
 	public String evadiOrdine(){

@@ -21,6 +21,19 @@ public class OrdineFacade {
 				return ordine;
 			}
 			
+			public Ordine createOrder(Date creationDate, Utente customer) {
+				Ordine order = new Ordine (creationDate, customer);
+				customer.addOrdine(order);
+				em.persist(order);
+				em.merge(customer);
+				return order;
+			}
+			
+			public void persistOrdine(Ordine o){
+				Ordine ordine = new Ordine(o.getRigheOrdine(), new Date(), new Date(), new Date(), o.getTotale(), o.getUtente());
+				em.persist(ordine);
+			}
+			
 		//Metodo per richiamare un ordine
 			public Ordine getOrdine(long id){
 				Ordine ordine = em.find(Ordine.class, id);

@@ -22,7 +22,7 @@
 	</tr>
 	<c:forEach var="rigaOrdine" items="#{ordineController.righeOrdine}">
 		<tr>
-		<td>${rigaOrdine.prodcut.name}</td>
+		<td>${rigaOrdine.product.name}</td>
 		<td>${rigaOrdine.quantita}</td>
 		</tr>
 	</c:forEach>
@@ -49,6 +49,7 @@
 		<td>
 		<h:commandLink action="#{ordineController.aggiungiRigaOrdine}" value="Aggiungi al Carrello">
 			<f:param name="pid" value="#{product.id}" />
+			<f:param name="uid" value="#{utenteController.corrente.id}" />
 		</h:commandLink>
 		</td>
 		</tr>

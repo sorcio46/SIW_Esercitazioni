@@ -16,7 +16,7 @@
 <div>Prodotto: ${ordineController.prodotto.name}</div>
 <div>Quantità: ${ordineController.quantita}</div>
 <h2>
-	<h:commandLink action="#{productController.makeOrder}" value="Aggiungi un altro prodotto al tuo ordine"/>
+	<h:commandLink action="#{ordineController.aggiungiAltraRigaOrdine}" value="Aggiungi un altro prodotto al tuo ordine"/>
 </h2>
 <h2>
 	<h:commandLink action="#{ordineController.chiudiOrdine}" value="Termina il tuo ordine adesso"/>

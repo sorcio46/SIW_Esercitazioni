@@ -26,7 +26,7 @@ public class Ordine {
 	
 	@OneToMany (fetch = FetchType.EAGER)
     @JoinColumn (name = "ordine_id")
-	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
+	private List<RigaOrdine> righeOrdine;
 	
 	public Ordine(List<RigaOrdine> righeOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
 		this.dataAperturaOrdine = dataAperturaOrdine;
@@ -37,11 +37,21 @@ public class Ordine {
 		this.utente = u;
 	}
 	
+    public Ordine (Date dataAperturaOrdine, Utente utente) {
+    	this.dataAperturaOrdine = dataAperturaOrdine;
+    	this.utente = utente;
+    	this.righeOrdine = new ArrayList<RigaOrdine>();
+    }
+	
 	public Ordine(List<RigaOrdine> righeOrdine, Utente u){
 		this.righeOrdine = righeOrdine;
 		this.utente = u;
 	}
 
+	public void aggiungiRigaOrdine(RigaOrdine r){
+		this.righeOrdine.add(r);
+	}
+	
 	public List<RigaOrdine> getRigheOrdine() {
 		return righeOrdine;
 	}
@@ -100,6 +110,13 @@ public class Ordine {
 	
 	public boolean isEvaso(){
 		if(getDataEvasioneOrdine()==null || getDataEvasioneOrdine().equals(getDataAperturaOrdine()))
+			return false;
+		else
+			return true;
+	}
+	
+	public boolean isChiuso(){
+		if(getDataChiusuraOrdine()==null || getDataChiusuraOrdine().equals(getDataAperturaOrdine()))
 			return false;
 		else
 			return true;
