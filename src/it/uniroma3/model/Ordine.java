@@ -18,10 +18,11 @@ import javax.persistence.OneToMany;
 
 public class Ordine {
 	@Column(nullable = false)
-	private List<RigaOrdine> rigaOrdine = new ArrayList<RigaOrdine>();
+	@OneToMany(mappedBy = "ordine")
+	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long codice;
+	private Long id;
 	@Column(nullable = false)
 	private Date dataAperturaOrdine;
 	@Column(nullable = false)
@@ -33,32 +34,30 @@ public class Ordine {
 	
 	@ManyToOne
 	private Utente utente;
-	@OneToMany(mappedBy = "ordine")
-	private List<RigaOrdine> righeOrdine;
 	
-	
-	public Ordine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
+	public Ordine(List<RigaOrdine> righeOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
 		this.dataAperturaOrdine = dataAperturaOrdine;
 		this.dataChiusuraOrdine = dataChiusuraOrdine;
 		this.dataEvasioneOrdine = dataEvasioneOrdine;
-		this.rigaOrdine = null;
+		this.righeOrdine = righeOrdine;
 		this.totale = totale;
-		
-	}
-	
-	public Ordine(){
+		this.utente = u;
 	}
 
-	public List<RigaOrdine> getRigaOrdine() {
-		return rigaOrdine;
+	public List<RigaOrdine> getRigheOrdine() {
+		return righeOrdine;
 	}
 
-	public void setRigaOrdine(List<RigaOrdine> rigaOrdine) {
-		this.rigaOrdine = rigaOrdine;
+	public void setRigheOrdine(List<RigaOrdine> righeOrdine) {
+		this.righeOrdine = righeOrdine;
 	}
 
-	public Long getCodice() {
-		return codice;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Date getDataAperturaOrdine() {
@@ -101,22 +100,10 @@ public class Ordine {
 		this.utente = utente;
 	}
 
-	public List<RigaOrdine> getRigheOrdine() {
-		return righeOrdine;
-	}
-
-	public void setRigheOrdine(List<RigaOrdine> righeOrdine) {
-		this.righeOrdine = righeOrdine;
-	}
-
-	public void addRigaOrdine(RigaOrdine r){
-		this.righeOrdine.add(r);
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codice == null) ? 0 : codice.hashCode());
 		result = prime
 				* result
 				+ ((dataAperturaOrdine == null) ? 0 : dataAperturaOrdine
@@ -129,9 +116,13 @@ public class Ordine {
 				* result
 				+ ((dataEvasioneOrdine == null) ? 0 : dataEvasioneOrdine
 						.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((righeOrdine == null) ? 0 : righeOrdine.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(totale);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((utente == null) ? 0 : utente.hashCode());
 		return result;
 	}
 
@@ -144,11 +135,6 @@ public class Ordine {
 		if (getClass() != obj.getClass())
 			return false;
 		Ordine other = (Ordine) obj;
-		if (codice == null) {
-			if (other.codice != null)
-				return false;
-		} else if (!codice.equals(other.codice))
-			return false;
 		if (dataAperturaOrdine == null) {
 			if (other.dataAperturaOrdine != null)
 				return false;
@@ -164,13 +150,25 @@ public class Ordine {
 				return false;
 		} else if (!dataEvasioneOrdine.equals(other.dataEvasioneOrdine))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (righeOrdine == null) {
+			if (other.righeOrdine != null)
+				return false;
+		} else if (!righeOrdine.equals(other.righeOrdine))
+			return false;
 		if (Double.doubleToLongBits(totale) != Double
 				.doubleToLongBits(other.totale))
 			return false;
+		if (utente == null) {
+			if (other.utente != null)
+				return false;
+		} else if (!utente.equals(other.utente))
+			return false;
 		return true;
 	}
-	
-	
-	
 
 }

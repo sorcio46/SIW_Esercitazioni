@@ -14,15 +14,15 @@ public class OrdineFacade {
 			private EntityManager em;
 		
 		//Metodo per la persistenza di un ordine
-			public Ordine createOrdine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale){
-				Ordine ordine = new Ordine( rigaOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale);
+			public Ordine createOrdine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
+				Ordine ordine = new Ordine( rigaOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, u);
 				em.persist(ordine);
 				return ordine;
 			}
 			
 		//Metodo per richiamare un ordine
-			public Ordine getOrdine(long codice){
-				Ordine ordine = em.find(Ordine.class, codice);
+			public Ordine getOrdine(long id){
+				Ordine ordine = em.find(Ordine.class, id);
 				return ordine;
 			}
 			
@@ -39,6 +39,11 @@ public class OrdineFacade {
 				em.merge(ordine);
 			}
 			
+			public void updateOrdine(Long id){
+				Ordine ordine = em.find(Ordine.class, id);
+				updateOrdine(ordine);
+			}
+			
 		//Metodo per cancellare un ordine dal database
 			private void deleteOrdine(Ordine ordine){
 				em.remove(ordine);
@@ -46,8 +51,8 @@ public class OrdineFacade {
 			
 		// Metodo per la ricerca di un ordine tramite codice e richiamo della cancellazione
 		//tramite il parametro codice per un eventuale eliminazione dal database
-			public void deleteOrdine(Long codice){
-				Ordine ordine = em.find(Ordine.class, codice);
+			public void deleteOrdine(Long id){
+				Ordine ordine = em.find(Ordine.class, id);
 			deleteOrdine(ordine);
 			}
 			

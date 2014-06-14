@@ -36,7 +36,7 @@
 		<th><font color="#008800" size="4" face="Arial" >Fornitore </font></th>
 		<th><font color="#008800" size="4" face="Arial" >Azioni Disponibili</font></th>
 	</tr>
-	<c:forEach var="product" items="#{productController.products}">
+	<c:forEach var="product" items="#{ordineController.products}">
 		<tr>
 		<td>
 		<h:commandLink action="#{productController.findProduct}" value="#{product.name}">
