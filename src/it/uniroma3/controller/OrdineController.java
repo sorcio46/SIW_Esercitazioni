@@ -64,10 +64,12 @@ public class OrdineController {
 	}
 	
 	public String chiudiOrdine(){
+		
 		for(RigaOrdine ro : righeOrdine){
 			double prezzo = ro.getProdotto().getPrice();
 			totale = totale + (prezzo*ro.getQuantita());
 		}
+		
 		dataChiusuraOrdine=new Date();
 		dataEvasioneOrdine=new Date();
 		dataAperturaOrdine=new Date();
