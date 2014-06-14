@@ -34,7 +34,7 @@
 		<td>${product.fornitore}</td>
 		<td>
 		<h:commandLink action="#{ordineController.aggiungiRigaOrdine}" value="Aggiungi al Carrello">
-		<f:param name="pid" value="#{product.id}" />
+			<f:param name="pid" value="#{product.id}" />
 		</h:commandLink>
 		</td>
 		</tr>
