@@ -1,13 +1,5 @@
 package it.uniroma3.model;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Column;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @NamedQuery(name="trovaTutteLeRigheOrdine", query="SELECT r from RigaOrdine r")
@@ -17,7 +9,7 @@ public class RigaOrdine {
 	private long id;
 	
 	@OneToOne
-	@Column(nullable=false)
+    @JoinColumn (name="product_id")
 	private Product prodotto;
 	
 	@Column(nullable=false)

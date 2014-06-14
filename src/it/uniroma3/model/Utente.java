@@ -2,6 +2,7 @@ package it.uniroma3.model;
 
 import java.util.*;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,7 +32,7 @@ public class Utente {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany(mappedBy="utente")
+	@OneToMany (mappedBy="customer", fetch=FetchType.EAGER)
 	private List<Ordine> ordini;
 
 	public Utente(String nome, String cognome, Date dataDiNascita, Date dataDiRegistrazione, String indirizzo, String mail,

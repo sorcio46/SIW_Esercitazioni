@@ -3,23 +3,12 @@ package it.uniroma3.model;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 @NamedQuery(name = "TrovaTuttiGliOrdini", query = "SELECT o FROM Ordine o")
 
 public class Ordine {
-	@Column(nullable = false)
-	@OneToMany(mappedBy = "ordine")
-	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -34,6 +23,10 @@ public class Ordine {
 	
 	@ManyToOne
 	private Utente utente;
+	
+	@OneToMany (fetch = FetchType.EAGER)
+    @JoinColumn (name = "order_id")
+	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
 	
 	public Ordine(List<RigaOrdine> righeOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
 		this.dataAperturaOrdine = dataAperturaOrdine;
