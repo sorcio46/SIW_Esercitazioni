@@ -13,7 +13,7 @@
 	<f:view>
 		<h:form>
 			<c:forEach var="rigaOrdine"
-				items="#{ordineController.getRigheOrdine}">
+				items="#{ordineController.ordineCorrente.righeOrdine}">
 				<tr>
 					<td>${rigaOrdine.product.name}</td>
 					<td>${rigaOrdine.quantita}</td>
@@ -21,9 +21,9 @@
 				</tr>
 			</c:forEach>
 			<tr>
-				<td>${ordineController.ordine.totale}</td>
-				<td>${ordineController.ordine.dataAperturaOrdine}</td>
-				<td>${ordineController.ordine.dataChiusuraOrdine}</td>
+				<td>${ordineController.ordineCorrente.totale}</td>
+				<td>${ordineController.ordineCorrente.dataAperturaOrdine}</td>
+				<td>${ordineController.ordineCorrente.dataChiusuraOrdine}</td>
 			</tr>
 		</h:form>
 		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
