@@ -10,16 +10,18 @@
 </head>
 <body>
 <f:view>
+<h:form>
 <h2>Dettagli</h2>
-<div>Prodotto: ${ordineController.rigaordine.prodotto.name}</div>
+<div>Prodotto: ${ordineController.prodotto.name}</div>
 <div>Quantità: <h:inputText value="#{ordineController.quantita}" 
     		required="false"
     		requiredMessage="La Quantita' e' obbligatoria"
     		converterMessage="La Quantita' deve essere maggiore o uguale a 1" 
     		id="quantita"/> <h:message for="quantita" /> 
 </div>
-<h:form>
 <h:commandLink action="#{ordineController.confermaRigaOrdine}" value="Aggiungi al Carrello">
+	<f:param name="pid" value="#{ordineController.prodotto.id}" />
+	<f:param name="quantita" value="#{ordineController.quantita}" />
 </h:commandLink>
 </h:form>
 </f:view>

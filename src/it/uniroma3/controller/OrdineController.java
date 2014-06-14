@@ -18,14 +18,18 @@ public class OrdineController {
 
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
+	
 	@ManagedProperty(value= "#{sessionScope['ordine']}")
 	private Ordine ordine;
+	
 	@ManagedProperty(value = "#{param.pid}")
 	private Long pid;
-	private Product prodotto;
-	private int quantita;
+	
 	@ManagedProperty(value= "#{sessionScope['rigaordine']}")
 	private RigaOrdine rigaordine;
+	
+	private int quantita;	
+	private Product prodotto;
 	private List<Ordine> ordini;
 	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
 	private Long codice;
@@ -48,16 +52,14 @@ public class OrdineController {
 
 	public String aggiungiRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine=new RigaOrdine();
-		this.rigaordine.setProdotto(prodotto);
 		return "riepilogoRigaOrdine"; 
 	}
 	
 	public String confermaRigaOrdine(){
-		this.prodotto=this.rigaordine.getProdotto();
+		this.prodotto = this.pFacade.getProduct(pid);
 		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
 		this.righeOrdine.add(this.rigaordine);
-		return "creaOrdine";
+		return "index";
 	}
 	
 	public String listOrdini() {
