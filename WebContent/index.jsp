@@ -45,7 +45,11 @@
 				<f:param name="uid" value="#{utenteController.corrente.id}" />
 			</h:commandLink>
 			</h:form></center></h1>
-			<h1><center><a href='<c:url value="/faces/consultaOrdini.jsp" />'>Consulta i tuoi Ordini</a></center></h1>
+			<h1><center>
+			<h:form>
+			<h:commandLink action="#{ordineController.listaOrdini}" value="Consulta i tuoi ordini">
+			</h:commandLink>
+			</h:form></center></h1>
 		</c:if>
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">
 			<h1><center><a href='<c:url value="/faces/loginUtente.jsp" />'>Effettua il login Utente</a></center></h1>

@@ -2,17 +2,51 @@ package it.uniroma3.model;
 
 import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.ejb.Stateless;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 
+@Stateless(name="OrdineFacade")
+public class OrdineFacade {
 
+	@PersistenceContext(unitName = "siw-progetto")
+	private EntityManager em;
+
+	public Ordine createOrder(Date creationDate, Utente customer) {
+		Ordine order = new Ordine (creationDate, customer);
+		customer.addOrdine(order);
+		em.persist(order);
+		return order;
+	}	
+
+	public Ordine getOrdine(Long id) {
+		return this.em.find (Ordine.class, id);
+	}
+
+	public List<Ordine> getOrdiniChiusi() {
+		TypedQuery<Ordine> q = this.em.createQuery("SELECT o FROM Order o WHERE o.status = :status", Ordine.class);
+		q.setParameter("status", "chiuso");
+		return q.getResultList();
+	}
+
+	public void updateOrdine (Ordine o) {
+		this.em.merge(o);
+	}
+	
+	public List<Ordine> getAllOrdini(){
+		CriteriaQuery<Ordine> cq = em.getCriteriaBuilder().createQuery(Ordine.class);
+        cq.select(cq.from(Ordine.class));
+        List<Ordine> ordini= em.createQuery(cq).getResultList();
+		return ordini ;
+	}
+}
+
+/*
 public class OrdineFacade {
 
 	
 		@PersistenceContext(unitName = "siw-progetto")
-			private EntityManager em;
+		private EntityManager em;
 		
 		//Metodo per la persistenza di un ordine
 			public Ordine createOrdine(List<RigaOrdine> rigaOrdine, Date dataAperturaOrdine, Date dataChiusuraOrdine, Date dataEvasioneOrdine, double totale, Utente u){
@@ -77,3 +111,4 @@ public class OrdineFacade {
 			}
 			
 }
+*/

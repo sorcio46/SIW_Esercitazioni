@@ -57,7 +57,7 @@ public class OrdineController {
 
 	public String createOrdine() {
 		utente = uFacade.getUtente(uid);
-		this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
+		//this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
 		return "ordine";
 	}
 	
@@ -74,7 +74,6 @@ public class OrdineController {
 	}
 
 	public String aggiungiAltraRigaOrdine(){
-		this.products = pFacade.getAllProducts();
 		return "creaOrdine";
 	}
 	
@@ -112,9 +111,7 @@ public class OrdineController {
 		dataChiusuraOrdine=new Date();
 		dataEvasioneOrdine=new Date();
 		
-		ordineCorrente.toString();
-		//QUI FA NULL POINTER EXCEPION
-		ordineFacade.persistOrdine(ordineCorrente);
+		ordine=ordineFacade.createOrder(new Date(), ordineCorrente.getUtente());
 		//ordineCorrente=ordineFacade.createOrdine(ordineCorrente.getRigheOrdine(),dataAperturaOrdine,dataChiusuraOrdine,dataEvasioneOrdine,ordineCorrente.getTotale(),ordineCorrente.getUtente());
 		
 		return "index";
@@ -152,9 +149,9 @@ public class OrdineController {
 		return "tuttiGliOrdini";
 	}
 	
-	public String listOrdini() {
+	public String listaOrdini() {
 		this.ordini = ordineFacade.getAllOrdini();
-		return "ordini";
+		return "consultaOrdini";
 	}
 
 	public String findOrdine() {
