@@ -19,7 +19,6 @@ public class OrdineController {
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
 	
-	@ManagedProperty(value= "#{sessionScope['ordine']}")
 	private Ordine ordine;
 	
 	@ManagedProperty(value = "#{param.pid}")
@@ -31,7 +30,7 @@ public class OrdineController {
 	private int quantita;	
 	private Product prodotto;
 	private List<Ordine> ordini;
-	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();
+	private List<RigaOrdine> righeOrdine = new ArrayList<RigaOrdine>();; 
 	private Long codice;
 	private Date dataAperturaOrdine;
 	private Date dataChiusuraOrdine;
@@ -51,15 +50,35 @@ public class OrdineController {
 	}
 
 	public String aggiungiRigaOrdine(){
+		this.ordine = null;
 		this.prodotto = this.pFacade.getProduct(pid);
 		return "riepilogoRigaOrdine"; 
 	}
 	
 	public String confermaRigaOrdine(){
 		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita, this.ordine);
+		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
+		dataAperturaOrdine=new Date();
 		this.righeOrdine.add(this.rigaordine);
 		return "rigaOrdine";
+	}
+	
+	public String chiudiOrdine(){
+		for(RigaOrdine ro : righeOrdine){
+			double prezzo = ro.getProdotto().getPrice();
+			totale = totale + (prezzo*ro.getQuantita());
+		}
+		dataChiusuraOrdine=new Date();
+		dataEvasioneOrdine=new Date();
+		dataAperturaOrdine=new Date();
+		
+		this.ordine = this.ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale);
+		for(RigaOrdine ro : righeOrdine){
+			ro.setOrdine(ordine);
+			rFacade.updateRigaOrdine(ro.getId());
+		}
+		this.righeOrdine = null;
+		return "index";
 	}
 	
 	public String listOrdini() {
@@ -91,14 +110,6 @@ public class OrdineController {
 
 	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
-	}
-
-	public List<RigaOrdine> getRigaOrdine() {
-		return righeOrdine;
-	}
-
-	public void setRigaOrdine(List<RigaOrdine> rigaOrdine) {
-		this.righeOrdine = rigaOrdine;
 	}
 
 	public Long getCodice() {

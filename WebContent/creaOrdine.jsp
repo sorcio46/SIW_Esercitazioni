@@ -14,6 +14,20 @@
 <h1><center><font color="blue" size="8" face="Verdana" >Crea il tuo Ordine</font></center></h1>
 <h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${utenteController.corrente.nome} ${utenteController.corrente.cognome}</font></center></h2>
 <h:form>
+<c:if test="${ordineController.righeOrdine != null}">
+<table>
+	<tr>
+		<th><font color="#008800" size="4" face="Arial" >Nome </font></th> 
+		<th><font color="#008800" size="4" face="Arial" >Quantita </font></th> 
+	</tr>
+	<c:forEach var="rigaOrdine" items="#{ordineController.righeOrdine}">
+		<tr>
+		<td>${rigaOrdine.prodcut.name}</td>
+		<td>${rigaOrdine.quantita}</td>
+		</tr>
+	</c:forEach>
+</table>
+</c:if>
 <table>
 	<tr>
 		<th><font color="#008800" size="4" face="Arial" >Nome </font></th> 

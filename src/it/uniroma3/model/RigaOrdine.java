@@ -31,6 +31,11 @@ public class RigaOrdine {
 		this.setQuantita(q);
 		this.ordine=o;
 	}
+	
+	public RigaOrdine(Product p, int q){
+		this.prodotto=p;
+		this.setQuantita(q);
+	}
 
 	public RigaOrdine(){
 	}

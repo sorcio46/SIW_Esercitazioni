@@ -45,6 +45,9 @@ public class Ordine {
 		this.totale = totale;
 		
 	}
+	
+	public Ordine(){
+	}
 
 	public List<RigaOrdine> getRigaOrdine() {
 		return rigaOrdine;
