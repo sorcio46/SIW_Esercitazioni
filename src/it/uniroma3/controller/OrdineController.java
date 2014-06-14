@@ -43,6 +43,7 @@ public class OrdineController {
 	private Date dataChiusuraOrdine;
 	private Date dataEvasioneOrdine;
 	private double totale;
+	private Utente utente;
 	
 	private List<Product> products;
 	
@@ -56,21 +57,21 @@ public class OrdineController {
 	private UtenteFacade uFacade;
 
 	public String createOrdine() {
-		Utente u = uFacade.getUtente(uid);
-		this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, u);
+		utente = uFacade.getUtente(uid);
+		this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
 		return "ordine";
 	}
 	
 	public String inizializzaOrdine(){
 		
 		this.products = pFacade.getAllProducts();
-		Utente u = uFacade.getUtente(uid);
+		utente = uFacade.getUtente(uid);
 		
 		dataAperturaOrdine=new Date();
 		dataChiusuraOrdine=new Date();
 		dataEvasioneOrdine=new Date();
 		
-		this.ordineCorrente = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, u);
+		this.ordineCorrente = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
 		return "creaOrdine";
 	}
 
@@ -103,6 +104,19 @@ public class OrdineController {
 		}
 		
 		return "ordine";
+	}
+	
+	public String getUtenteDaOrdine(){
+		try{
+			this.ordine=this.ordineFacade.getOrdine(this.id);
+		    this.utente = this.ordine.getUtente();
+		} catch(Exception e){return "index";}
+		return "utente";
+	}
+	
+	public String listaOrdiniChiusi(){
+		this.ordini = this.ordineFacade.getOrdiniChiusi();
+		return "tuttiGliOrdini";
 	}
 	
 	public String listOrdini() {

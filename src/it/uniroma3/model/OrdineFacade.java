@@ -2,10 +2,11 @@ package it.uniroma3.model;
 
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
+
 
 public class OrdineFacade {
 
@@ -32,6 +33,12 @@ public class OrdineFacade {
 				cq.select(cq.from(Ordine.class));
 				List<Ordine> ordine = em.createQuery(cq).getResultList();
 				return ordine;
+			}
+			
+			public List<Ordine> getOrdiniChiusi(){
+				TypedQuery<Ordine> q = this.em.createQuery("SELECT o FROM Order o WHERE o.status = :status", Ordine.class);
+				q.setParameter("status", "chiuso");
+				return q.getResultList();
 			}
 			
 		//Metodo per fare il merge dell'ordine sul database
