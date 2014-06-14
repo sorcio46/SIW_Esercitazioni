@@ -22,8 +22,8 @@
 			</c:forEach>
 			<tr>
 				<td>${ordineController.ordine.totale}</td>
-				<td>${ordineController.ordine.dataDiAperturaOrdine}</td>
-				<td>${ordineController.ordine.dataDiChiusuraOrdine}</td>
+				<td>${ordineController.ordine.dataAperturaOrdine}</td>
+				<td>${ordineController.ordine.dataChiusuraOrdine}</td>
 			</tr>
 		</h:form>
 		<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
