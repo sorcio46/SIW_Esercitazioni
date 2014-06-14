@@ -115,7 +115,6 @@ public class OrdineController {
 		ordineCorrente.toString();
 		//QUI FA NULL POINTER EXCEPION
 		ordineFacade.persistOrdine(ordineCorrente);
-		//ordineFacade.persistOrdine(ordineCorrente);
 		//ordineCorrente=ordineFacade.createOrdine(ordineCorrente.getRigheOrdine(),dataAperturaOrdine,dataChiusuraOrdine,dataEvasioneOrdine,ordineCorrente.getTotale(),ordineCorrente.getUtente());
 		
 		return "index";
