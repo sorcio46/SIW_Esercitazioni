@@ -39,7 +39,12 @@
 		</c:if>
 		<c:if test="${utenteController.corrente != null}">
 			<h1><center><h:form><h:commandLink action="#{productController.listProductsUser}" value="Visita il Catalogo Prodotti"/></h:form></center></h1>
-			<h1><center><h:form><h:commandLink action="#{productController.makeOrder}" value="Crea un Nuovo Ordine"/></h:form></center></h1>
+			<h1><center>
+			<h:form>
+			<h:commandLink action="#{ordineController.inizializzaOrdine}" value="Crea Nuovo Ordine">
+				<f:param name="uid" value="#{utenteController.corrente.id}" />
+			</h:commandLink>
+			</h:form></center></h1>
 			<h1><center><a href='<c:url value="/faces/consultaOrdini.jsp" />'>Consulta i tuoi Ordini</a></center></h1>
 		</c:if>
 		<c:if test="${amministratoreController.corrente == null && utenteController.corrente == null}">

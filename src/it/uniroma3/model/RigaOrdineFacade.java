@@ -17,6 +17,16 @@ public class RigaOrdineFacade {
 		return r;
 	}
 	
+	public RigaOrdine createRigaOrdine(Product p, int q){
+		RigaOrdine r = new RigaOrdine(p,q);
+		em.persist(r);
+		return r;
+	}
+	
+	public void persist(RigaOrdine r){
+		em.persist(r);
+	}
+	
 	public RigaOrdine getRigaOrdine(Long id){
 		RigaOrdine r = em.find(RigaOrdine.class, id);
 		return r;

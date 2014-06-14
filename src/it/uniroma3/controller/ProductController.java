@@ -43,11 +43,6 @@ public class ProductController {
 		this.products = productFacade.getAllProducts();
 		return "catalogoProdotti"; 
 	}
-
-	public String makeOrder(){
-		this.products = productFacade.getAllProducts();
-		return "creaOrdine"; 
-	}
 	
 	public String findProduct() {
 		this.product = productFacade.getProduct(id);
