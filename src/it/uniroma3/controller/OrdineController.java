@@ -21,8 +21,7 @@ public class OrdineController {
 
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
-	private int quantita;	
-	private Product prodotto;
+	private int quantita;
 	private List<Ordine> ordini;
 	private List<RigaOrdine> righeOrdine;
 	private Date dataAperturaOrdine;
@@ -31,6 +30,7 @@ public class OrdineController {
 	private double totale;
 	private Ordine ordine;
 	private Utente utente;
+	private List<Product> products;
 	
 	@ManagedProperty(value= "#{sessionScope['ordineCorrente']}")
 	private Ordine ordineCorrente;
@@ -43,9 +43,9 @@ public class OrdineController {
 	
 	@ManagedProperty(value= "#{sessionScope['rigaordine']}")
 	private RigaOrdine rigaordine;
-	
-	@ManagedProperty(value= "#{sessionScope['products']}")
-	private List<Product> products;
+
+	@ManagedProperty(value= "#{sessionScope['prodotto']}")
+	private Product prodotto;
 	
 	@EJB
 	private OrdineFacade ordineFacade;
@@ -77,29 +77,35 @@ public class OrdineController {
 		this.ordineCorrente=ordineFacade.createOrder(new Date(), this.utente);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", this.ordineCorrente);
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("products", this.products);
 		return "creaOrdine";
 	}
 
 	public String aggiungiAltraRigaOrdine(){
+		this.products = null;
+		this.products = pFacade.getAllProducts();
 		return "creaOrdine";
 	}
 	
-	//CHE E' STA ROBA?
+	//
+	// Metodo 2
+	// Il controller riceve dalla JSP creaOrdine il comando
+	// di generare un prodotto associato all pid passato da parametro
+	//
 	public String aggiungiRigaOrdine(){
-		this.ordine = null;
 		this.prodotto = this.pFacade.getProduct(pid);
-		//ordineCorrente=(Ordine)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(ordineCorrente);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("prodotto", this.prodotto);
 		return "riepilogoRigaOrdine";
-		//OK
 	}
 	
+	//
+	// Metodo 3
+	// Il controller riceve dalla JSP riepilogoRigaOrdine il comando
+	// di creare la rigaOrdine e di persisterla, poi di aggiungerla all'ordine
+	//
 	public String confermaRigaOrdine(){
-		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
+		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita, this.ordineCorrente);
 		ordineCorrente.aggiungiRigaOrdine(this.rigaordine);
 		return "rigaOrdine";
-		//OK
 	}
 	
 	//
