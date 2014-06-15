@@ -12,13 +12,9 @@ public class Ordine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(nullable = false)
 	private Date dataAperturaOrdine;
-	@Column(nullable = false)
 	private Date dataChiusuraOrdine;
-	@Column(nullable = false)
 	private Date dataEvasioneOrdine;
-	@Column(nullable = false)
 	private double totale;
 	
 	@ManyToOne

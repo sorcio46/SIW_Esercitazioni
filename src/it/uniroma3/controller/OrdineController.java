@@ -43,7 +43,8 @@ public class OrdineController {
 	
 	@ManagedProperty(value= "#{sessionScope['rigaordine']}")
 	private RigaOrdine rigaordine;
-		
+	
+	@ManagedProperty(value= "#{sessionScope['products']}")
 	private List<Product> products;
 	
 	@EJB
@@ -61,15 +62,21 @@ public class OrdineController {
 		return "ordine";
 	}
 	
+	// METODO 1
+	// Il controller riceve dalla Index il messaggio di prepararsi alla creazione
+	// di un nuovo ordine
+	//
 	public String inizializzaOrdine(){
 		
 		this.products = pFacade.getAllProducts();
 		this.utente = uFacade.getUtente(uid);
 		
 		this.righeOrdine = new ArrayList<RigaOrdine>();
-		Ordine o=new Ordine(this.righeOrdine, this.utente);
+		//Ordine o=new Ordine(this.righeOrdine, this.utente);
+		this.ordineCorrente=ordineFacade.createOrder(new Date(), this.utente);
 		
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", o);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", this.ordineCorrente);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("products", this.products);
 		return "creaOrdine";
 	}
 
@@ -77,6 +84,7 @@ public class OrdineController {
 		return "creaOrdine";
 	}
 	
+	//CHE E' STA ROBA?
 	public String aggiungiRigaOrdine(){
 		this.ordine = null;
 		this.prodotto = this.pFacade.getProduct(pid);

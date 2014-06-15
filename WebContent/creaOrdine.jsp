@@ -32,6 +32,9 @@
 </c:if>
 
 -->
+<h2>Dettagli Ordine</h2>
+<h2>Data apertura ordine: ${ordineController.ordineCorrente.dataAperturaOrdine}</h2>
+<h2>Numero prodotti: ${ordineController.ordineCorrente.righeOrdine.size()}</h2>
 <table>
 	<tr>
 		<th><font color="#008800" size="4" face="Arial" >Nome </font></th> 
@@ -53,12 +56,13 @@
 		<td>
 		<h:commandLink action="#{ordineController.aggiungiRigaOrdine}" value="Aggiungi al Carrello">
 			<f:param name="pid" value="#{product.id}" />
-			<f:param name="uid" value="#{utenteController.corrente.id}" />
 		</h:commandLink>
 		</td>
 		</tr>
 	</c:forEach>
 </table>
+		<h:commandLink action="#{ordineController.chiudiOrdine}" value="Chiudi il tuo Ordine">
+		</h:commandLink>
 </h:form>
 <a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 </f:view>

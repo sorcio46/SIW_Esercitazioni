@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Prodotto nel carrello</title>
 </head>
 <body>
 <f:view>
 <h:form>
-<h2>Dettagli</h2>
+<h2>Hai aggiunto il seguente prodotto al carrello</h2>
 <div>Prodotto: ${ordineController.prodotto.name}</div>
 <div>Quantità: ${ordineController.quantita}</div>
 <h2>
