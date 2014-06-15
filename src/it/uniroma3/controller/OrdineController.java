@@ -30,6 +30,8 @@ public class OrdineController {
 	private double totale;
 	private Ordine ordine;
 	private Utente utente;
+	
+	@ManagedProperty(value= "#{sessionScope['products']}")
 	private List<Product> products;
 	
 	@ManagedProperty(value= "#{sessionScope['ordineCorrente']}")
@@ -73,16 +75,11 @@ public class OrdineController {
 		this.utente = uFacade.getUtente(uid);
 		
 		this.righeOrdine = new ArrayList<RigaOrdine>();
-		//Ordine o=new Ordine(this.righeOrdine, this.utente);
 		this.ordineCorrente=ordineFacade.createOrder(new Date(), this.utente);
 		
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", this.ordineCorrente);
-		return "creaOrdine";
-	}
-
-	public String aggiungiAltraRigaOrdine(){
-		this.products = null;
-		this.products = pFacade.getAllProducts();
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("products", this.products);
+		
 		return "creaOrdine";
 	}
 	
@@ -124,7 +121,7 @@ public class OrdineController {
 		
 		ordineFacade.updateOrdine(ordineCorrente);
 		
-		return "index";
+		return "ordine";
 	}
 	
 	public String evadiOrdine(){
@@ -136,6 +133,10 @@ public class OrdineController {
 		}
 		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
 		return "ordini";
+	}
+	
+	public String aggiungiAltraRigaOrdine(){
+		return "creaOrdine";
 	}
 	
 	public void aggiornaMagazzino(Ordine o){

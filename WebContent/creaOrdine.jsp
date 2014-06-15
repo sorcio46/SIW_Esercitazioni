@@ -14,24 +14,6 @@
 <h1><center><font color="blue" size="8" face="Verdana" >Crea il tuo Ordine</font></center></h1>
 <h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${utenteController.corrente.nome} ${utenteController.corrente.cognome}</font></center></h2>
 <h:form>
-<!--  
-
-<c:if test="${!ordineController.righeOrdine.isEmpty()}">
-<table>
-	<tr>
-		<th><font color="#008800" size="4" face="Arial" >Nome </font></th> 
-		<th><font color="#008800" size="4" face="Arial" >Quantita </font></th> 
-	</tr>
-	<c:forEach var="rigaOrdine" items="#{ordineController.righeOrdine}">
-		<tr>
-		<td>${rigaOrdine.product.name}</td>
-		<td>${rigaOrdine.quantita}</td>
-		</tr>
-	</c:forEach>
-</table>
-</c:if>
-
--->
 <h2>Dettagli Ordine</h2>
 <h2>Data apertura ordine: ${ordineController.ordineCorrente.dataAperturaOrdine}</h2>
 <h2>Numero prodotti: ${ordineController.ordineCorrente.righeOrdine.size()}</h2>
@@ -61,8 +43,9 @@
 		</tr>
 	</c:forEach>
 </table>
-		<h:commandLink action="#{ordineController.chiudiOrdine}" value="Chiudi il tuo Ordine">
-		</h:commandLink>
+	<h2> </h2>
+	<h:commandLink action="#{ordineController.chiudiOrdine}" value="Chiudi il tuo Ordine">
+	</h:commandLink>
 </h:form>
 <a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 </f:view>
