@@ -62,6 +62,7 @@ public class OrdineController {
 		return "ordine";
 	}
 	
+	//
 	// METODO 1
 	// Il controller riceve dalla Index il messaggio di prepararsi alla creazione
 	// di un nuovo ordine
@@ -101,6 +102,10 @@ public class OrdineController {
 		//OK
 	}
 	
+	//
+	// METODO 4
+	// Il controller riceve da una jsp il comando di chiudere l'ordine corrente
+	//
 	public String chiudiOrdine(){
 		
 		for(RigaOrdine ro : ordineCorrente.getRigheOrdine()){
@@ -109,18 +114,9 @@ public class OrdineController {
 		}
 		
 		ordineCorrente.setTotale(totale);
+		ordineCorrente.setDataChiusuraOrdine(new Date());
 		
-		for(RigaOrdine ro : ordineCorrente.getRigheOrdine()){
-			ro.setOrdine(ordineCorrente);
-			rFacade.updateRigaOrdine(ro.getId());
-		}
-		
-		dataAperturaOrdine=new Date();
-		dataChiusuraOrdine=new Date();
-		dataEvasioneOrdine=new Date();
-		
-		ordine=ordineFacade.createOrder(new Date(), ordineCorrente.getUtente());
-		//ordineCorrente=ordineFacade.createOrdine(ordineCorrente.getRigheOrdine(),dataAperturaOrdine,dataChiusuraOrdine,dataEvasioneOrdine,ordineCorrente.getTotale(),ordineCorrente.getUtente());
+		ordineFacade.updateOrdine(ordineCorrente);
 		
 		return "index";
 	}
