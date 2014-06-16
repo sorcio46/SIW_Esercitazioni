@@ -43,7 +43,7 @@
 						id="indirizzo"/>
 						<h:message for="indirizzo"/>
 			</div>
-			<div>Data Di Nascita: <h:inputText value="#{utenteController.dataDiNascita}"
+			<div>Data Di Nascita (yyyy-MM-dd): <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"
 						id="dataDiNascita">
