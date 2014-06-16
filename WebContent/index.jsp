@@ -39,6 +39,11 @@
 				</h:commandLink>
 			</h:form>
 			</center></h1>
+			<h1><center>
+			<h:form>
+			<h:commandLink action="#{ordineController.listaOrdiniAdmin}" value="Consulta gli ordini">
+			</h:commandLink>
+			</h:form></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraFornitore.jsp" />'>Registra un Fornitore</a></center></h1>
 		</c:if>

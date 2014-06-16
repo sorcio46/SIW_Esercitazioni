@@ -195,6 +195,11 @@ public class OrdineController {
 		return "ordiniUtente";
 	}
 	
+	public String listaOrdiniAdmin(){
+		this.ordini = ordineFacade.getAllOrdini();
+		return "ordiniUtente";
+	}
+	
 	//
 	// Metodo per la stampa degli ordini
 	//
