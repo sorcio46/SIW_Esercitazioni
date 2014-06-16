@@ -28,6 +28,12 @@ public class OrdineFacade {
 		q.setParameter("status", "chiuso");
 		return q.getResultList();
 	}
+	
+	public List<Ordine> getOrdiniUtente(Utente u){
+		TypedQuery<Ordine> q = this.em.createQuery("SELECT o FROM Order o WHERE o.status = :status", Ordine.class);
+		q.setParameter("utente", u);
+		return q.getResultList();
+	}
 
 	public void updateOrdine (Ordine o) {
 		this.em.merge(o);

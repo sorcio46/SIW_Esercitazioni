@@ -160,18 +160,32 @@ public class OrdineController {
 		return "tuttiGliOrdini";
 	}
 	
+	//
+	// Metodo per la stampa degli ordini
+	//
 	public String listaOrdini() {
+		this.utente=uFacade.getUtente(uid);
 		this.ordini = ordineFacade.getAllOrdini();
-		return "consultaOrdini";
+		return "ordiniUtente";
+	}
+	
+	//
+	// Metodo per la stampa degli ordini di un utente
+	// Non sembra funzionare
+	//
+	public String listaOrdiniUtente() {
+		this.utente=uFacade.getUtente(uid);
+		this.ordini = ordineFacade.getOrdiniUtente(this.utente);
+		return "ordiniUtente";
 	}
 
+	//
+	// Metodo per trovare un ordine a partire dall'id
+	//
 	public String findOrdine() {
 		this.ordine = ordineFacade.getOrdine(id);
-		return "ordine";
-	}
-
-	public String findOrdine(Long codice) {
-		this.ordine = ordineFacade.getOrdine(codice);
+		this.righeOrdine = this.ordine.getRigheOrdine();
+		this.ordineCorrente = ordine;
 		return "ordine";
 	}
 

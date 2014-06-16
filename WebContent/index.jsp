@@ -48,6 +48,7 @@
 			<h1><center>
 			<h:form>
 			<h:commandLink action="#{ordineController.listaOrdini}" value="Consulta i tuoi ordini">
+				<f:param name="uid" value="#{utenteController.corrente.id}" />
 			</h:commandLink>
 			</h:form></center></h1>
 		</c:if>
