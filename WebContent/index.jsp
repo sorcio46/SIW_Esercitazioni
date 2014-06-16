@@ -33,17 +33,20 @@
 		<c:if test="${amministratoreController.corrente != null}">
 			<h1><center><h:form><h:commandLink action="#{productController.listProductsAdmin}" value="Modifica il Catalogo Prodotti"/></h:form></center></h1>
 			<h1><center><a href='<c:url value="/faces/newProduct.jsp" />'>Inserisci un prodotto nel catalogo</a></center></h1>
+			
 			<h1><center>
 			<h:form>
 				<h:commandLink action="#{ordineController.preparaEvasioneOrdini}" value="Evadi Ordini">
 				</h:commandLink>
 			</h:form>
 			</center></h1>
+			
 			<h1><center>
 			<h:form>
 			<h:commandLink action="#{ordineController.listaOrdiniAdmin}" value="Consulta gli ordini">
 			</h:commandLink>
 			</h:form></center></h1>
+			
 			<h1><center><a href='<c:url value="/faces/registraUtente.jsp" />'>Registra Utente</a></center></h1>
 			<h1><center><a href='<c:url value="/faces/registraFornitore.jsp" />'>Registra un Fornitore</a></center></h1>
 		</c:if>

@@ -197,7 +197,7 @@ public class OrdineController {
 	
 	public String listaOrdiniAdmin(){
 		this.ordini = ordineFacade.getAllOrdini();
-		return "ordiniUtente";
+		return "ordiniAmministratori";
 	}
 	
 	//

@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Ordini utente</title>
+<title>Ordini Amministratore</title>
 </head>
 <body>
 <f:view>
-<h1><center><font color="blue" size="8" face="Verdana" >Consulta i tuoi Ordini</font></center></h1>
-<h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${utenteController.corrente.nome} ${utenteController.corrente.cognome}</font></center></h2>
+<h1><center><font color="blue" size="8" face="Verdana" >Consulta gli Ordini</font></center></h1>
+<h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${amministratoreController.corrente.nome} ${amministratoreController.corrente.cognome}</font></center></h2>
 <h:form>
 <table>
 	<tr>

@@ -34,6 +34,7 @@
 	        </tr>      
 			<c:forEach var="ordine" items="#{ordineController.ordini}">
 				<tr>
+					<c:if test="${ordine.dataEvasioneOrdine == null}">
 					<td>
 					<h:commandLink action="#{ordineController.findOrdine}" value="#{ordine.id}"><f:param name="id" value="#{ordine.id}" />
 					</h:commandLink>
@@ -47,6 +48,7 @@
 						<f:param name="id" value="#{ordine.id}" />
 					</h:commandLink>
 					</td>
+					</c:if>
 				</tr>
 			</c:forEach>
 			</table>
