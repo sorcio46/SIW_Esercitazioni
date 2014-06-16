@@ -26,19 +26,27 @@
 			</h2>
 			<div>
 			<table class="table">
-	        <tr><th>Nome</th><th>Quantita</th><th>Data Apertura Ordine</th><th>Data Chiusura Ordine</th><th>Totale</th><th>Azioni disponibili</th></tr>      
-			<c:forEach var="ordine"
-				items="#{ordineController.ordiniChiusi}">
+	        <tr>
+	        	<th>ID Ordine</th>
+	        	<th>Utente</th>
+	        	<th>Totale</th>
+	        	<th>Azioni disponibili</th>
+	        </tr>      
+			<c:forEach var="ordine" items="#{ordineController.ordini}">
 				<tr>
-					<td>${ordine.prodotto.name}</td>
-					<td>${ordine.quantita}</td>
-					<td>${ordine.dataAperturaOrdine}</td>
-					<td>${ordine.dataChiusuraOrdine}</td>
+					<td>
+					<h:commandLink action="#{ordineController.findOrdine}" value="#{ordine.id}"><f:param name="id" value="#{ordine.id}" />
+					</h:commandLink>
+					</td>
+					
+					<td>${ordine.utente}</td>
 					<td>${ordine.totale}</td>
-					<td><h:commandLink action="#{ordineController.evadiOrdine}"
-							value="Evadi l'Ordine">
-							<f:param name="id" value="#{ordine.id}" />
-						</h:commandLink></td>
+					
+					<td>
+					<h:commandLink action="#{ordineController.evadiOrdine}" value="Evadi l'Ordine">
+						<f:param name="id" value="#{ordine.id}" />
+					</h:commandLink>
+					</td>
 				</tr>
 			</c:forEach>
 			</table>

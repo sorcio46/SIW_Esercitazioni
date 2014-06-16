@@ -30,7 +30,7 @@ public class OrdineFacade {
 	}
 	
 	public List<Ordine> getOrdiniUtente(Utente u){
-		TypedQuery<Ordine> q = this.em.createQuery("SELECT o FROM Order o WHERE o.status = :status", Ordine.class);
+		TypedQuery<Ordine> q = this.em.createQuery("SELECT o FROM Order o WHERE o.utente = :utente", Ordine.class);
 		q.setParameter("utente", u);
 		return q.getResultList();
 	}

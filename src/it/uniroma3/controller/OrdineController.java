@@ -124,6 +124,10 @@ public class OrdineController {
 		return "ordine";
 	}
 	
+	public String aggiungiAltraRigaOrdine(){
+		return "creaOrdine";
+	}
+	
 	public String evadiOrdine(){
 		Ordine o = this.ordineFacade.getOrdine(this.id);
 		if(o.verificaDisponibilita()){
@@ -133,10 +137,6 @@ public class OrdineController {
 		}
 		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
 		return "ordini";
-	}
-	
-	public String aggiungiAltraRigaOrdine(){
-		return "creaOrdine";
 	}
 	
 	public void aggiornaMagazzino(Ordine o){
@@ -170,8 +170,16 @@ public class OrdineController {
 	}
 	
 	//
+	// Metodo per la stampa degli ordini
+	//
+	public String preparaEvasioneOrdini(){
+		this.ordini = ordineFacade.getAllOrdini();
+		return "evadiOrdine";
+	}
+	
+	//
 	// Metodo per la stampa degli ordini di un utente
-	// Non sembra funzionare
+	// DA TESTARE
 	//
 	public String listaOrdiniUtente() {
 		this.utente=uFacade.getUtente(uid);

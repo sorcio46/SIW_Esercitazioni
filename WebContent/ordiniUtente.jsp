@@ -22,8 +22,8 @@
 		<th><font color="#008800" size="4" face="Arial" >Utente </font></th>  
 	</tr>
 	<c:forEach var="ordine" items="#{ordineController.ordini}">
-	<c:if test="${ordine.utente.id == utenteController.corrente.id}">
 		<tr>
+		<c:if test="${ordine.utente.id == utenteController.corrente.id}">
 		<td>
 		<h:commandLink action="#{ordineController.findOrdine}" value="#{ordine.id}"><f:param name="id" value="#{ordine.id}" />
 		</h:commandLink>
@@ -39,8 +39,8 @@
 		
 		<td>${ordine.totale}</td>
 		<td>${ordine.utente.mail}</td>
+		</c:if>
 		</tr>
-	</c:if>
 	</c:forEach>
 </table>
 </h:form>

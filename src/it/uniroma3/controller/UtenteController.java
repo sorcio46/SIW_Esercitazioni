@@ -31,7 +31,7 @@ public class UtenteController {
 	private UtenteFacade utenteFacade;
 	
 	public String createUtente() {
-		this.utente = utenteFacade.createUtente(nome, cognome, dataDiNascita, dataDiRegistrazione, indirizzo, mail, password);
+		this.utente = utenteFacade.createUtente(nome, cognome, dataDiNascita, new Date(), indirizzo, mail, password);
 		return "utente"; 
 	}
 	
