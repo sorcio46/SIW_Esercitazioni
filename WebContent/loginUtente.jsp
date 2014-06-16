@@ -9,9 +9,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Schermata Login Utente</title>
 </head>
-<body>
+<body bgcolor="#00BFFF">
 	<f:view>
-		<h1><center>SCHERMATA LOGIN UTENTE</center></h1>
+		<h1><center><font color="red">SCHERMATA LOGIN UTENTE</font></center></h1>
 		<h:form>
 			<div><font color="#DC143C" size="4">${utenteController.errore}</font></div>
 			<div>Email: <h:inputText value="#{utenteController.mail}"

@@ -7,13 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Catalogo Prodotti</title>
 </head>
-<body>
+<body bgcolor="#F0FFFF">
 <f:view>
-<h1>Catalogo Prodotti</h1>
+<h1><font color="red"> Catalogo Prodotti</font></h1>
 <h:form>
 <table>
 	<tr>
-		<th>Nome</th><th>Prezzo</th><th>Disponibilità</th><th>Fornitore</th>
+		<th><font color="#008800" size="4" face="Arial" >Nome</font></th>
+		<th><font color="#008800" size="4" face="Arial" >Prezzo</font></th>
+		<th><font color="#008800" size="4" face="Arial" >Disponibilità</font></th>
+		<th><font color="#008800" size="4" face="Arial" >Fornitore</font></th>
 	</tr>
 	<c:forEach var="product" items="#{productController.products}">
 		<tr>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Catalogo Prodotti</title>
 </head>
-<body>
+<body bgcolor="#F0FFFF">
 <f:view>
 <h1><center><font color="blue" size="8" face="Verdana" >CATALOGO PRODOTTI</font></center></h1>
 <h2><center><font color="red" size="5" face="Verdana" >Benvenuto ${amministratoreController.corrente.nome} ${amministratoreController.corrente.cognome}</font></center></h2>
