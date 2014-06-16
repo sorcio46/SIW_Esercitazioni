@@ -119,7 +119,7 @@ public class OrdineController {
 		ordineCorrente.setTotale(totale);
 		ordineCorrente.setDataChiusuraOrdine(new Date());
 		
-		ordineFacade.updateOrdine(ordineCorrente.getId());
+		ordineFacade.updateOrdine(ordineCorrente);
 		
 		return "ordine";
 	}

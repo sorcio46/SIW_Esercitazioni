@@ -40,13 +40,8 @@ public class OrdineFacade {
 		q.setParameter("utente", u);
 		return q.getResultList();
 	}
-
-	public void updateOrdine (Ordine o){
-		updateOrdine(o.getId());
-	}
 	
-	public void updateOrdine (Long Id){
-		Ordine o = getOrdine(Id);
+	public void updateOrdine (Ordine o){
 		this.em.merge(o);
 	}
 	
