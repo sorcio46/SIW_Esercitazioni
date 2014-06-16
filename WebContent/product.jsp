@@ -4,10 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><form color="#008800"> Informazioni sul prodotto</form></title>
+<title>Informazioni sul prodotto</title>
 </head>
 <body>
 <f:view>
+<h1><center> Informazioni Prodotto </center></h1>
 <h1>${productController.product.name}</h1>
 <h2>Dettagli</h2>
 <div>Codice: ${productController.product.code}</div>
