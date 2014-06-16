@@ -8,10 +8,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Nuovo Prodotto</title>
 </head>
-<body>
+<body bgcolor="#F5F5F5">
 <f:view>
+<h1><center><font color="red"> Inserimento Nuovo Prodotto</font></center></h1>
 <h:form>
-    <div>Nome: <h:inputText value="#{productController.name}" 
+    <div>Nome:<h:inputText value="#{productController.name}" 
                      required="true"
                      requiredMessage="Il Nome e' obbligatorio"
                      id="name"/> <h:message for="name" />
@@ -46,10 +47,9 @@
                      
 	</div>
 	<div>
-		<h:commandButton value="Submit"  action="#{productController.createProduct}"/>
+		<h:commandButton value="Inserisci Prodotto"  action="#{productController.createProduct}"/>
 	</div>
-	<h:commandLink action="#{productController.listProducts}"
-						value="Lista dei prodotti" />
+	<h:commandLink action="#{productController.listProducts}" value="Lista dei prodotti" />
 	<a href='<c:url value="/faces/index.jsp" />'>Torna alla pagina Home</a>
 </h:form>
 </f:view>
