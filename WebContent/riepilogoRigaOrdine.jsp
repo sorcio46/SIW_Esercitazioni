@@ -20,7 +20,6 @@
     		id="quantita"/> <h:message for="quantita" /> 
 </div>
 <h:commandLink action="#{ordineController.confermaRigaOrdine}" value="Aggiungi al Carrello">
-	<f:param name="pid" value="#{ordineController.prodotto.id}" />
 	<f:param name="quantita" value="#{ordineController.quantita}" />
 </h:commandLink>
 </h:form>

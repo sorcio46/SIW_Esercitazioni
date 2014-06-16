@@ -14,17 +14,28 @@ import it.uniroma3.model.UtenteFacade;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class OrdineController {
 
 	@ManagedProperty(value = "#{param.id}")
 	private Long id;
+	private int quantita;
+	private List<Ordine> ordini;
+	private List<RigaOrdine> righeOrdine;
+	private Date dataAperturaOrdine;
+	private Date dataChiusuraOrdine;
+	private Date dataEvasioneOrdine;
+	private double totale;
+	private Ordine ordine;
+	private Utente utente;
+	
+	@ManagedProperty(value= "#{sessionScope['products']}")
+	private List<Product> products;
 	
 	@ManagedProperty(value= "#{sessionScope['ordineCorrente']}")
 	private Ordine ordineCorrente;
-	
-	private Ordine ordine;
 	
 	@ManagedProperty(value = "#{param.pid}")
 	private Long pid;
@@ -34,19 +45,9 @@ public class OrdineController {
 	
 	@ManagedProperty(value= "#{sessionScope['rigaordine']}")
 	private RigaOrdine rigaordine;
-	
-	private int quantita;	
+
+	@ManagedProperty(value= "#{sessionScope['prodotto']}")
 	private Product prodotto;
-	private List<Ordine> ordini;
-	private List<RigaOrdine> righeOrdine;
-	
-	private Date dataAperturaOrdine;
-	private Date dataChiusuraOrdine;
-	private Date dataEvasioneOrdine;
-	private double totale;
-	private Utente utente;
-	
-	private List<Product> products;
 	
 	@EJB
 	private OrdineFacade ordineFacade;
@@ -59,52 +60,66 @@ public class OrdineController {
 
 	public String createOrdine() {
 		utente = uFacade.getUtente(uid);
-		this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
+		//this.ordine = ordineFacade.createOrdine(righeOrdine, dataAperturaOrdine, dataChiusuraOrdine, dataEvasioneOrdine, totale, utente);
 		return "ordine";
 	}
 	
+	//
+	// METODO 1
+	// Il controller riceve dalla Index il messaggio di prepararsi alla creazione
+	// di un nuovo ordine
+	//
 	public String inizializzaOrdine(){
 		
 		this.products = pFacade.getAllProducts();
 		this.utente = uFacade.getUtente(uid);
 		
-		dataAperturaOrdine=new Date();
-		dataChiusuraOrdine=new Date();
-		dataEvasioneOrdine=new Date();
-		
 		this.righeOrdine = new ArrayList<RigaOrdine>();
-		this.ordine.toString();
-		this.ordineCorrente=new Ordine(this.righeOrdine, this.utente);
+		this.ordineCorrente=ordineFacade.createOrder(new Date(), this.utente);
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("ordineCorrente", this.ordineCorrente);
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("products", this.products);
+		
 		return "creaOrdine";
 	}
-
+	
+	//
+	// Metodo 2
+	// Il controller riceve dalla JSP creaOrdine il comando
+	// di generare un prodotto associato all pid passato da parametro
+	//
 	public String aggiungiRigaOrdine(){
-		this.ordine = null;
 		this.prodotto = this.pFacade.getProduct(pid);
-		return "riepilogoRigaOrdine"; 
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("prodotto", this.prodotto);
+		return "riepilogoRigaOrdine";
 	}
 	
+	//
+	// Metodo 3
+	// Il controller riceve dalla JSP riepilogoRigaOrdine il comando
+	// di creare la rigaOrdine e di persisterla, poi di aggiungerla all'ordine
+	//
 	public String confermaRigaOrdine(){
-		this.prodotto = this.pFacade.getProduct(pid);
-		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita);
-		//QUI FA NULL POINTER EXCEPTION
-		this.ordineCorrente.getRigheOrdine().add(this.rigaordine);
+		this.rigaordine=rFacade.createRigaOrdine(this.prodotto, quantita, this.ordineCorrente);
+		ordineCorrente.aggiungiRigaOrdine(this.rigaordine);
 		return "rigaOrdine";
 	}
 	
+	//
+	// METODO 4
+	// Il controller riceve da una jsp il comando di chiudere l'ordine corrente
+	//
 	public String chiudiOrdine(){
 		
-		for(RigaOrdine ro : this.ordineCorrente.getRigheOrdine()){
+		for(RigaOrdine ro : ordineCorrente.getRigheOrdine()){
 			double prezzo = ro.getProdotto().getPrice();
 			totale = totale + (prezzo*ro.getQuantita());
 		}
 		
-		this.ordineCorrente.setTotale(totale);
+		ordineCorrente.setTotale(totale);
+		ordineCorrente.setDataChiusuraOrdine(new Date());
 		
-		for(RigaOrdine ro : righeOrdine){
-			ro.setOrdine(this.ordineCorrente);
-			rFacade.updateRigaOrdine(ro.getId());
-		}
+		ordineFacade.updateOrdine(ordineCorrente);
 		
 		return "ordine";
 	}
@@ -118,6 +133,10 @@ public class OrdineController {
 		}
 		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
 		return "ordini";
+	}
+	
+	public String aggiungiAltraRigaOrdine(){
+		return "creaOrdine";
 	}
 	
 	public void aggiornaMagazzino(Ordine o){
@@ -141,9 +160,9 @@ public class OrdineController {
 		return "tuttiGliOrdini";
 	}
 	
-	public String listOrdini() {
+	public String listaOrdini() {
 		this.ordini = ordineFacade.getAllOrdini();
-		return "ordini";
+		return "consultaOrdini";
 	}
 
 	public String findOrdine() {
