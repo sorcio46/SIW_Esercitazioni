@@ -43,14 +43,6 @@
 						id="indirizzo"/>
 						<h:message for="indirizzo"/>
 			</div>
-			<div>Data Di Registrazione: <h:inputText value="#{utenteController.dataDiRegistrazione}"
-						required="true"
-						requiredMessage="Campo data di registrazione obbligatorio"
-						id="dataDiRegistrazione">
-						<f:convertDateTime pattern="yyyy-MM-dd"/>
-						</h:inputText>
-						<h:message for="dataDiRegistrazione"/>
-			</div>
 			<div>Data Di Nascita: <h:inputText value="#{utenteController.dataDiNascita}"
 						required="true"
 						requiredMessage="Campo data di nascita obbligatorio"

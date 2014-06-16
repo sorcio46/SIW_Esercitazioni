@@ -124,6 +124,10 @@ public class OrdineController {
 		return "ordine";
 	}
 	
+	public String aggiungiAltraRigaOrdine(){
+		return "creaOrdine";
+	}
+	
 	public String evadiOrdine(){
 		Ordine o = this.ordineFacade.getOrdine(this.id);
 		if(o.verificaDisponibilita()){
@@ -133,10 +137,6 @@ public class OrdineController {
 		}
 		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
 		return "ordini";
-	}
-	
-	public String aggiungiAltraRigaOrdine(){
-		return "creaOrdine";
 	}
 	
 	public void aggiornaMagazzino(Ordine o){
@@ -160,18 +160,40 @@ public class OrdineController {
 		return "tuttiGliOrdini";
 	}
 	
+	//
+	// Metodo per la stampa degli ordini
+	//
 	public String listaOrdini() {
+		this.utente=uFacade.getUtente(uid);
 		this.ordini = ordineFacade.getAllOrdini();
-		return "consultaOrdini";
+		return "ordiniUtente";
+	}
+	
+	//
+	// Metodo per la stampa degli ordini
+	//
+	public String preparaEvasioneOrdini(){
+		this.ordini = ordineFacade.getAllOrdini();
+		return "evadiOrdine";
+	}
+	
+	//
+	// Metodo per la stampa degli ordini di un utente
+	// DA TESTARE
+	//
+	public String listaOrdiniUtente() {
+		this.utente=uFacade.getUtente(uid);
+		this.ordini = ordineFacade.getOrdiniUtente(this.utente);
+		return "ordiniUtente";
 	}
 
+	//
+	// Metodo per trovare un ordine a partire dall'id
+	//
 	public String findOrdine() {
 		this.ordine = ordineFacade.getOrdine(id);
-		return "ordine";
-	}
-
-	public String findOrdine(Long codice) {
-		this.ordine = ordineFacade.getOrdine(codice);
+		this.righeOrdine = this.ordine.getRigheOrdine();
+		this.ordineCorrente = ordine;
 		return "ordine";
 	}
 
