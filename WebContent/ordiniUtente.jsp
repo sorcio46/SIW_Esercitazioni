@@ -30,7 +30,7 @@
 		</td>
 		
 		<c:if test="${ordine.dataEvasioneOrdine == null}">
-			<td>Data Apertura : ${ordine.dataChiusuraOrdine}</td>
+			<td>Data Chiusura : ${ordine.dataChiusuraOrdine}</td>
 		</c:if>
 		
 		<c:if test="${ordine.dataEvasioneOrdine != null}">

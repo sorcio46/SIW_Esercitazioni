@@ -128,15 +128,41 @@ public class OrdineController {
 		return "creaOrdine";
 	}
 	
+	//
+	// Metodo per l'evasione dell'ordine
+	//
 	public String evadiOrdine(){
-		Ordine o = this.ordineFacade.getOrdine(this.id);
-		if(o.verificaDisponibilita()){
-			o.evadiOrdine();
-			this.ordineFacade.updateOrdine(o);
-			this.aggiornaMagazzino(o);
+		ordineCorrente = this.ordineFacade.getOrdine(this.id);
+		if(this.verificaDisponibilita(ordineCorrente)){
+			this.evadiOrdine(ordineCorrente);
+			this.aggiornaMagazzino(ordineCorrente);
 		}
 		this.ordini = (List<Ordine>) this.ordineFacade.getOrdiniChiusi();
-		return "ordini";
+		return "evadiOrdine";
+	}
+	
+	//
+	// Metodo per la verifica della disponibilita
+	// delle righe ordine di un Ordine
+	//
+	public boolean verificaDisponibilita(Ordine o){
+		boolean var = true;
+		Product p;
+		List<RigaOrdine> rp = o.getRigheOrdine();
+		for(RigaOrdine i : rp){
+			p = pFacade.getProduct(i.getProdotto().getId());
+			if(i.getQuantita()>p.getDisponibilita())
+				var=false;
+		}
+		return var;
+	}
+	
+	//
+	// Metodo per l'evasione di un Ordine confermato
+	//
+	public void evadiOrdine(Ordine o){
+		ordineCorrente.setDataEvasioneOrdine(new Date());
+		ordineFacade.updateOrdine(o);
 	}
 	
 	public void aggiornaMagazzino(Ordine o){

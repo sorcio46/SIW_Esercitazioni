@@ -39,7 +39,7 @@
 					</h:commandLink>
 					</td>
 					
-					<td>${ordine.utente}</td>
+					<td>${ordine.utente.mail}</td>
 					<td>${ordine.totale}</td>
 					
 					<td>
