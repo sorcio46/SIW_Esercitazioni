@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Schermata Login Utente</title>
 </head>
-<body bgcolor="#00BFFF">
+<body bgcolor="#AFEEEE">
 	<f:view>
 		<h1><center><font color="red">SCHERMATA LOGIN UTENTE</font></center></h1>
 		<h:form>
