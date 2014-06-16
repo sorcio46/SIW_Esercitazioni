@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Informazioni sul prodotto</title>
+<title><form color="#008800"> Informazioni sul prodotto</form></title>
 </head>
 <body>
 <f:view>
